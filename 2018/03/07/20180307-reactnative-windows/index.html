@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装依赖项 Node  the React Native command line interface Python2  a JDK  Android Studio.  安装Chocolateychocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm 安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行：  -NoProfile -In">
+<meta name="description" content="安装依赖项 Node  the React Native command line interface Python2  a JDK  Android Studio.  安装Chocolateychocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm 安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行： @&amp;quot;%SystemR">
 <meta name="keywords" content="reactnative,windows">
 <meta property="og:type" content="article">
 <meta property="og:title" content="windows下安装reactnative">
 <meta property="og:url" content="http://yoursite.com/2018/03/07/20180307-reactnative-windows/index.html">
 <meta property="og:site_name" content="铁匠铺">
-<meta property="og:description" content="安装依赖项 Node  the React Native command line interface Python2  a JDK  Android Studio.  安装Chocolateychocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm 安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行：  -NoProfile -In">
+<meta property="og:description" content="安装依赖项 Node  the React Native command line interface Python2  a JDK  Android Studio.  安装Chocolateychocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm 安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行： @&amp;quot;%SystemR">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T12:44:36.676Z">
+<meta property="og:updated_time" content="2018-03-10T05:11:01.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="windows下安装reactnative">
-<meta name="twitter:description" content="安装依赖项 Node  the React Native command line interface Python2  a JDK  Android Studio.  安装Chocolateychocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm 安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行：  -NoProfile -In">
+<meta name="twitter:description" content="安装依赖项 Node  the React Native command line interface Python2  a JDK  Android Studio.  安装Chocolateychocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm 安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行： @&amp;quot;%SystemR">
 
 
 
@@ -351,7 +351,8 @@
 </ul>
 <h3 id="安装Chocolatey"><a href="#安装Chocolatey" class="headerlink" title="安装Chocolatey"></a>安装Chocolatey</h3><p>chocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm</p>
 <p>安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行：</p>
- <figure class="highlight plain"><figcaption><span>-NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<pre><code>@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString(&apos;https://chocolatey.org/install.ps1&apos;))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;
+</code></pre><p> <code>`</code></p>
 <p>安装完成后，输入 </p>
 <pre><code>choco
 </code></pre><p>查看版本号</p>
@@ -538,7 +539,7 @@ To run your app on UWP:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
