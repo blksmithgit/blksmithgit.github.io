@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记">
-<meta property="og:url" content="http://yoursite.com/tags/reactnative/index.html">
+<meta name="description" content="observable property 123456789101112131415161718192021private string _firstName;public string FirstName&amp;#123;  get  &amp;#123;    return _firstName;  &amp;#125;  set  &amp;#123;    if (_firstName == value)    &amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20180406-mvvm-in-wpf">
+<meta property="og:url" content="http://yoursite.com/2018/04/07/20180406-mvvm-in-wpf/index.html">
 <meta property="og:site_name" content="笔记">
+<meta property="og:description" content="observable property 123456789101112131415161718192021private string _firstName;public string FirstName&amp;#123;  get  &amp;#123;    return _firstName;  &amp;#125;  set  &amp;#123;    if (_firstName == value)    &amp;#12">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-08T00:26:39.845Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记">
+<meta name="twitter:title" content="20180406-mvvm-in-wpf">
+<meta name="twitter:description" content="observable property 123456789101112131415161718192021private string _firstName;public string FirstName&amp;#123;  get  &amp;#123;    return _firstName;  &amp;#125;  set  &amp;#123;    if (_firstName == value)    &amp;#12">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/reactnative/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/07/20180406-mvvm-in-wpf/"/>
 
 
 
 
 
-  <title>标签: reactnative | 笔记</title>
+  <title>20180406-mvvm-in-wpf | 笔记</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,54 +238,151 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>reactnative<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/20180406-mvvm-in-wpf/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/03/07/20180307-reactnative-windows/" itemprop="url">
-              
-                <span itemprop="name">windows下安装reactnative</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">20180406-mvvm-in-wpf</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-07T11:27:24+08:00"
-              content="2018-03-07" >
-          03-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T20:29:14+08:00">
+                2018-04-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>observable property</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private string _firstName;</span><br><span class="line">public string FirstName</span><br><span class="line">&#123;</span><br><span class="line">  get</span><br><span class="line">  &#123;</span><br><span class="line">    return _firstName;</span><br><span class="line">  &#125;</span><br><span class="line">  set</span><br><span class="line">  &#123;</span><br><span class="line">    if (_firstName == value)</span><br><span class="line">    &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    _firstName = value;</span><br><span class="line">    var handler = PropertyChanged;</span><br><span class="line">    if (handler != null)</span><br><span class="line">    &#123;</span><br><span class="line">      handler(this, new PropertyChangedEventArgs(&quot;FirstName&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In order to solve this, MVVM Light proposes a few solutions:</p>
+<ul>
+<li>The logic needed to raise the PropertyChanged event can be stored in a ViewModelBase class that every ViewModel inherits from.</li>
+<li>Properties can be identified by a lambda expression instead of a string. This prevents typos or errors when the name of the property changes.</li>
+<li>The remaining lines can be automated using a code snippet in Visual Studio.</li>
+</ul>
+<h2 id="MVVM-in-WPF"><a href="#MVVM-in-WPF" class="headerlink" title="MVVM in WPF"></a>MVVM in WPF</h2><p><a href="https://www.codeproject.com/Articles/819294/WPF-MVVM-step-by-step-Basics-to-Advance-Level" target="_blank" rel="noopener">WPF MVVM step by step (Basics to Advance Level)</a></p>
+<p>对应的中文翻译</p>
+<p><a href="https://www.oschina.net/translate/wpf-mvvm-step-by-step-basics-to-advance-level?lang=chs&amp;page=2#" target="_blank" rel="noopener">https://www.oschina.net/translate/wpf-mvvm-step-by-step-basics-to-advance-level?lang=chs&amp;page=2#</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/04/20180403-wpf-framework/" rel="next" title="20180403-wpf-framework">
+                <i class="fa fa-chevron-left"></i> 20180403-wpf-framework
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -289,6 +390,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -309,8 +414,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -370,6 +484,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM-in-WPF"><span class="nav-number">1.</span> <span class="nav-text">MVVM in WPF</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -510,6 +640,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
