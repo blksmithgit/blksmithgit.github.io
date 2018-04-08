@@ -249,6 +249,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/20180403-wpf-framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="铁匠铺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/04/20180403-wpf-framework/" itemprop="url">20180403-wpf-framework</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T15:45:21+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WPF应用的框架选型"><a href="#WPF应用的框架选型" class="headerlink" title="WPF应用的框架选型"></a>WPF应用的框架选型</h1><h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><ul>
+<li>性能好，界面响应迅速，无阻塞</li>
+<li>当有异常发生时，容易定位和跟踪调试</li>
+<li>框架的更新频率，是否仍在维护</li>
+<li>被接受的程度</li>
+<li>除了wpf外，其它领域的适用情况</li>
+</ul>
+<h2 id="当前可选择框架"><a href="#当前可选择框架" class="headerlink" title="当前可选择框架"></a>当前可选择框架</h2><ul>
+<li>PRISM</li>
+<li>Caliburn.mirco</li>
+<li>MVVM Light</li>
+<li>Reactive UI</li>
+<li>Stylet</li>
+</ul>
+<h3 id="Prism"><a href="#Prism" class="headerlink" title=" Prism"></a><a href="https://github.com/PrismLibrary/Prism" target="_blank" rel="noopener"> Prism</a></h3><p>Prism is a framework for building loosely coupled, maintainable, and testable XAML applications in WPF, Windows 10 UWP, and Xamarin Forms. </p>
+<p><a href="https://github.com/Prism
+Library/Prism-Samples-Wpf" target="_blank" rel="noopener">Prism的WPF例子</a></p>
+<h3 id="MVVM-Light"><a href="#MVVM-Light" class="headerlink" title="MVVM Light"></a><a href="http://www.mvvmlight.net/" target="_blank" rel="noopener">MVVM Light</a></h3><p>The main purpose of the toolkit is to accelerate the creation and development of MVVM applications in Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Windows 10 UWP, Windows Presentation Foundation (WPF), Silverlight, Windows Phone.</p>
+<h3 id="Caliburn-Micro"><a href="#Caliburn-Micro" class="headerlink" title="Caliburn.Micro"></a><a href="https://caliburnmicro.com/" target="_blank" rel="noopener">Caliburn.Micro</a></h3><p>A small, yet powerful framework, designed for building applications across all XAML platforms. Its strong support for MV* patterns will enable you to build your solution quickly, without the need to sacrifice code quality or testability.</p>
+<h3 id="Stylet"><a href="#Stylet" class="headerlink" title="Stylet"></a><a href="http://www.cnblogs.com/waku/p/6879809.html" target="_blank" rel="noopener">Stylet</a></h3><p><a href="https://github.com/canton7/Stylet" target="_blank" rel="noopener">Stylet</a>是我最近发现的一个WPF MVVM框架, 在博客园上搜了一下, 相关的文章基本没有, 所以写了这个入门的文章推荐给大家.</p>
+<p>Stylet是受<a href="https://github.com/Caliburn-Micro/Caliburn.Micro" target="_blank" rel="noopener">Caliburn Micro</a>项目的启发, 所以借鉴了其中的很多概念, 同时精简了一些部分, 如只支持MVVM, WPF和.NET 4.5(Silverlight和Xamarin不受支持), 所以Style本身很小巧, DLL才140KB左右.</p>
+<p>虽然身材小,但相比知名的MVVM框架, 如MVVM Light等功能却一点都不差,加上很完善的文档,高覆盖率的单元测试,我认为它是一个很有潜力的MVVM框架.</p>
+<h2 id="一些讨论"><a href="#一些讨论" class="headerlink" title="一些讨论"></a>一些讨论</h2><h3 id="MVVM-Frameworks-For-NET"><a href="#MVVM-Frameworks-For-NET" class="headerlink" title="MVVM Frameworks For .NET"></a><a href="https://www.infoq.com/news/2011/12/mvvm-frameworks-net" target="_blank" rel="noopener">MVVM Frameworks For .NET</a></h3><ul>
+<li><a href="http://compositewpf.codeplex.com/" target="_blank" rel="noopener">PRISM</a> – provided by Microsoft. Works with MEF/Unity for dependency injection, has composite commands and is <a href="http://msdn.microsoft.com/en-us/library/gg430866(v=PandP.40" target="_blank" rel="noopener">extensible</a>.aspx). Detailed tutorials and walkthroughs at <a href="http://msdn.microsoft.com/en-us/library/gg406140.aspx" target="_blank" rel="noopener">MSDN</a>. </li>
+<li><a href="http://mvvmlight.codeplex.com/" target="_blank" rel="noopener">MVVM Light Toolkit</a> – has Project and Item templates for Visual Studio and Expression Blend. Read more <a href="http://www.galasoft.ch/mvvm/" target="_blank" rel="noopener">here</a> and refer tutorials on working with <a href="http://www.galasoft.ch/mvvm/creating/" target="_blank" rel="noopener">VS</a> and <a href="http://www.galasoft.ch/mvvm/creatingblend/" target="_blank" rel="noopener">Expression Blend</a>.</li>
+<li><a href="http://caliburnmicro.codeplex.com/" target="_blank" rel="noopener">Caliburn Micro</a> – supports ViewModel-First and View-First development, Asynchronous programming through co-routines.</li>
+<li><a href="http://simplemvvmtoolkit.codeplex.com/" target="_blank" rel="noopener">Simple MVVM Toolkit</a> – provides VS Project and Item Templates, Dependency Injection, support for Deep cloning and Property Association between Model and ViewModel</li>
+<li><a href="http://catel.codeplex.com/" target="_blank" rel="noopener">Catel</a> – includes Project and Item templates, user controls and enterprise library classes. Supports Dynamic View Model injection, lazy loading of view models and validations. Also sports WP7 specific view model services </li>
+</ul>
+<h3 id="MVVM-Light-Unity-or-Prism"><a href="#MVVM-Light-Unity-or-Prism" class="headerlink" title="MVVM Light + Unity or Prism?"></a><a href="https://stackoverflow.com/questions/4750255/mvvm-light-unity-or-prism" target="_blank" rel="noopener">MVVM Light + Unity or Prism?</a></h3><p>If you need modularity, you’d want to look at Prism. Prism has <em>some</em> elements that can help you with MVVM (DelegateCommand and CompositeCommand, for example), but I think it’s more complete with another MVVM framework.</p>
+<p>There was a question a few days ago about how to model Prism. Check that out for a detailed explanation of how to consider Prism’s functionality. <a href="https://stackoverflow.com/questions/4678198/high-level-modelling-advice-for-prism-mvvm/4736923#4736923" target="_blank" rel="noopener">High Level Modelling Advice for Prism MVVM</a></p>
+<p>Unity is an implementation of an inversion of control container and it’s definitely good, but Prism has the ability to use other containers. It has builtin support for MEF (which, in turn, is builtin to .NET 4.0), but it’s not your only choice. Look at some of the samples included in Prism and decide what approach you like better. Unity is not complete on its own for UI compositing in my opinion. MEF might be a closer choice if you wanted to try to composite a UI with the MVVM Framework + IoC Framework approach.</p>
+<p>MVVM Light is actually a complimentary framework to Prism. Other MVVM frameworks to consider:</p>
+<ul>
+<li>MVVM Foundation (very lightweight… good for small projects)</li>
+<li>Caliburn (very robust framework)</li>
+<li>Caliburn Micro (shares a name and an author from Caliburn, but it’s akin to MVVM Light with some nice conventions)</li>
+<li><a href="http://blog.paulbetts.org/index.php/2011/01/15/reactivexaml-is-now-reactiveui-2-0/" target="_blank" rel="noopener">ReactiveUI</a> (Formerly “ReactiveXAML”. This is a bit of a brain melter, but if you learn Reactive Extensions for .NET (Rx), this framework is simply amazing… magical in my opinion.)</li>
+</ul>
+<p>If I were going to start a new project: I would go with Prism and ReactiveUI.</p>
+<p>Prism because you have to have modularity with large projects and I like the ability to remove and add large units of functionality to an app just by deleting or adding DLLs (and you don’t have to implement the DLL sniffing feature like you would with just an IoC + MVVM approach). Easier to test, easier to debug, easier to develop separately. Nice all around.</p>
+<p>ReactiveUI because with UI programming these days, most of your time is spent managing your time on the UI thread. Blocking is a no-no… users don’t want to see a UI freeze; they want to see that animated GIF wait symbol spinning so they know they can work on something else while your data is loading. In addition, so much of the value applications provide these days is taking data from disparate systems and putting them together in the UI… not only will you need a good compositing system (Prism), but you will also need a good MVVM framework that treats asynchronous operations as its bread and butter… ReactiveUI is it.    </p>
+<h3 id="MVVM-Unity-Prism-MEF-Caliburn-What-should-I-use"><a href="#MVVM-Unity-Prism-MEF-Caliburn-What-should-I-use" class="headerlink" title="MVVM, Unity, Prism, MEF, Caliburn - What should I use?"></a><a href="https://stackoverflow.com/questions/10799101/mvvm-unity-prism-mef-caliburn-what-should-i-use" target="_blank" rel="noopener">MVVM, Unity, Prism, MEF, Caliburn - What should I use?</a></h3><p>I would recommend <a href="http://caliburnmicro.codeplex.com/" target="_blank" rel="noopener">Caliburn.Micro</a>, as it is straightforward to implement following the examples on the Caliburn.Micro documentation page. It also has a very compelling convention over configuration mechanism, and uses an <a href="http://caliburnmicro.codeplex.com/wikipage?title=All%20About%20Actions" target="_blank" rel="noopener">Actions</a> system to invoking verbs (methods) on your view models from the view. This is more powerful than any other mechanism I’ve seen.</p>
+<p>Prism is quite a heavyweight framework which includes elements of MVVM design to help the implementation, as well as being particularly tailored towards building composite applications (applications that are built up of decoupled components within a hosting shell).</p>
+<h3 id="7-Things-You-Need-to-Know-Before-Starting-a-Prism-WPF-Project"><a href="#7-Things-You-Need-to-Know-Before-Starting-a-Prism-WPF-Project" class="headerlink" title="7 Things You Need to Know Before Starting a Prism WPF Project"></a><a href="https://www.intertech.com/Blog/7-things-you-need-to-know-before-starting-a-prism-wpf-project/" target="_blank" rel="noopener">7 Things You Need to Know Before Starting a Prism WPF Project</a></h3><h3 id="prism-vs-mvvm-light-for-wpf"><a href="#prism-vs-mvvm-light-for-wpf" class="headerlink" title="prism vs mvvm light for wpf"></a><a href="https://stackoverflow.com/questions/20487243/prism-vs-mvvm-light-for-wpf" target="_blank" rel="noopener">prism vs mvvm light for wpf</a></h3><h3 id="Mvvm-no-framework-FreshMVVM-or-Prism"><a href="#Mvvm-no-framework-FreshMVVM-or-Prism" class="headerlink" title="Mvvm (no framework), FreshMVVM or Prism"></a><a href="https://forums.xamarin.com/discussion/88222/mvvm-no-framework-freshmvvm-or-prism" target="_blank" rel="noopener">Mvvm (no framework), FreshMVVM or Prism</a></h3><h2 id="例程"><a href="#例程" class="headerlink" title="例程"></a>例程</h2><p><a href="https://www.codeproject.com/Articles/165368/WPF-MVVM-Quick-Start-Tutorial" target="_blank" rel="noopener">https://www.codeproject.com/Articles/165368/WPF-MVVM-Quick-Start-Tutorial</a></p>
+<ul>
+<li><a href="http://www.codeproject.com/Articles/321806/MVVMLight-Hello-World-in-10-Minutes" target="_blank" rel="noopener">Hello World in MVVM Light in 10 Minutes</a></li>
+<li><a href="http://www.codeproject.com/Articles/323187/MVVMLight-Using-Two-Views" target="_blank" rel="noopener">MVVMLight Using Two Views</a></li>
+</ul>
+<p><a href="https://bitbucket.org/EoghanRua/blog-work/src/4d66eb8a74f4b4215c4799b8ec99a77ee018101f/C%23/ScrollingAnimationsMVVMLight/?at=master" target="_blank" rel="noopener">https://bitbucket.org/EoghanRua/blog-work/src/4d66eb8a74f4b4215c4799b8ec99a77ee018101f/C%23/ScrollingAnimationsMVVMLight/?at=master</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/install-git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -474,8 +643,7 @@
 <p>单项目配置：有时候需要用别的用户名</p>
 <p>直接在项目目录下做配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &quot;XXX&quot;</span><br><span class="line">git config user.email &quot;XXX@XXX.com&quot;</span><br></pre></td></tr></table></figure>
-<h4 id="配置ssh连接"><a href="#配置ssh连接" class="headerlink" title="配置ssh连接"></a>配置ssh连接</h4><p>#####windows</p>
-<p>以下命令都是在Git Bash中执行的</p>
+<h4 id="配置ssh连接"><a href="#配置ssh连接" class="headerlink" title="配置ssh连接"></a>配置ssh连接</h4><h5 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h5><p>以下命令都是在Git Bash中执行的</p>
 <ul>
 <li><p>生成密钥对（SSH key）</p>
 <p>  <code>ssh-keygen -t rsa -b 4096 -C &quot;xxx@xxx.com&quot;</code></p>
@@ -500,7 +668,7 @@
 <p>已经有很多这样的文章描述这个备份过程，我觉得最方便的还是用hexi-git-backup这个插件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-git-backup --save</span><br></pre></td></tr></table></figure>
 <p>然后打开_config.yml文件，加入一下配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">backup:</span><br><span class="line">  type: git</span><br><span class="line">  theme: next  // 如果需要备份主题的话，在这里配置</span><br><span class="line">  repository:</span><br><span class="line">    origin: git@gitee.com:xxx/xxxxx.git,master   // 你的备份库和分支</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">backup:</span><br><span class="line">  type: git</span><br><span class="line">  theme: next  // 如果需要备份主题的话，在这里配置</span><br><span class="line">  repository:</span><br><span class="line">    origin: git@gitee.com:xxx/xxxxx.git,master   // 你的备份库和分支</span><br></pre></td></tr></table></figure>
 <p>每次发布完后，运行</p>
 <p><code>hexo backup</code> 或者 <code>hexo b</code></p>
 <p>就可以完成备份</p>
@@ -1626,7 +1794,7 @@ To run your app on UWP:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
