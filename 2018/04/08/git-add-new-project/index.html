@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记">
-<meta property="og:url" content="http://yoursite.com/tags/windows/index.html">
+<meta name="description" content="问题使用git clone一般不会有问题，可是用git init初始化，或者直接在vs studio中加入了源代码管理，这种情况下，如何同步到git中去 解决方案1、 先在github建库，假设名字为git@github.com:yourname/yourproject.git 2、 在git bash中关联远程库并推送本地修改 123git remote add origin git@githu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git如何关联远程分支">
+<meta property="og:url" content="http://yoursite.com/2018/04/08/git-add-new-project/index.html">
 <meta property="og:site_name" content="笔记">
+<meta property="og:description" content="问题使用git clone一般不会有问题，可是用git init初始化，或者直接在vs studio中加入了源代码管理，这种情况下，如何同步到git中去 解决方案1、 先在github建库，假设名字为git@github.com:yourname/yourproject.git 2、 在git bash中关联远程库并推送本地修改 123git remote add origin git@githu">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-10T14:43:35.423Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记">
+<meta name="twitter:title" content="git如何关联远程分支">
+<meta name="twitter:description" content="问题使用git clone一般不会有问题，可是用git init初始化，或者直接在vs studio中加入了源代码管理，这种情况下，如何同步到git中去 解决方案1、 先在github建库，假设名字为git@github.com:yourname/yourproject.git 2、 在git bash中关联远程库并推送本地修改 123git remote add origin git@githu">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/windows/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/08/git-add-new-project/"/>
 
 
 
 
 
-  <title>标签: windows | 笔记</title>
+  <title>git如何关联远程分支 | 笔记</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,54 +238,149 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>windows<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/git-add-new-project/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/03/07/20180307-reactnative-windows/" itemprop="url">
-              
-                <span itemprop="name">windows下安装reactnative</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">git如何关联远程分支</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-07T11:27:24+08:00"
-              content="2018-03-07" >
-          03-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T15:48:29+08:00">
+                2018-04-08
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用git clone一般不会有问题，可是<br>用git init初始化，或者直接在vs studio中加入了源代码管理，这种情况下，如何同步到git中去</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>1、 先在github建库，假设名字为<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourname/yourproject.git</p>
+<p>2、 在git bash中关联远程库并推送本地修改</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:yourname/yourproject.git</span><br><span class="line">git pull origin master --allow-unrelated-histories //先合并远程文件到本地</span><br><span class="line">git push -u origin master //本地更新推送到远程</span><br></pre></td></tr></table></figure>
+</code></pre><p>git 2.9后，不同祖先分支不能直接合并，需要加上<code>--allow-unrelated-histories</code>参数</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/07/20180406-mvvm-in-wpf/" rel="next" title="mvvm in wpf">
+                <i class="fa fa-chevron-left"></i> mvvm in wpf
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/11/20180411-IoC-Container-Performance/" rel="prev" title="转一篇关于IOC性能测试的文章">
+                转一篇关于IOC性能测试的文章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -289,6 +388,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -309,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -370,6 +482,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -510,6 +638,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
