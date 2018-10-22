@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="vscode配置eslint，airbnb规范后，报错： 12345678910111213141516171819202122232425262728import React from &amp;apos;react&amp;apos;;import logo from &amp;apos;./logo.svg&amp;apos;;import &amp;apos;./App.css&amp;apos;;class App extends R">
+<meta name="description" content="vscode配置eslint，airbnb规范后，报错：Component should be written as a pure function (react/prefer-stateless-function) 12345678910111213141516171819202122232425262728import React from &amp;apos;react&amp;apos;;import l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20181009-Component-should-be-written-as-a-pure-function">
+<meta property="og:title" content="Component should be written as a pure function (react&#x2F;prefer-stateless-function)">
 <meta property="og:url" content="http://yoursite.com/2018/10/09/20181009-Component-should-be-written-as-a-pure-function/index.html">
 <meta property="og:site_name" content="笔记">
-<meta property="og:description" content="vscode配置eslint，airbnb规范后，报错： 12345678910111213141516171819202122232425262728import React from &amp;apos;react&amp;apos;;import logo from &amp;apos;./logo.svg&amp;apos;;import &amp;apos;./App.css&amp;apos;;class App extends R">
+<meta property="og:description" content="vscode配置eslint，airbnb规范后，报错：Component should be written as a pure function (react/prefer-stateless-function) 12345678910111213141516171819202122232425262728import React from &amp;apos;react&amp;apos;;import l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-09T13:49:05.025Z">
+<meta property="og:updated_time" content="2018-10-09T14:17:45.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20181009-Component-should-be-written-as-a-pure-function">
-<meta name="twitter:description" content="vscode配置eslint，airbnb规范后，报错： 12345678910111213141516171819202122232425262728import React from &amp;apos;react&amp;apos;;import logo from &amp;apos;./logo.svg&amp;apos;;import &amp;apos;./App.css&amp;apos;;class App extends R">
+<meta name="twitter:title" content="Component should be written as a pure function (react&#x2F;prefer-stateless-function)">
+<meta name="twitter:description" content="vscode配置eslint，airbnb规范后，报错：Component should be written as a pure function (react/prefer-stateless-function) 12345678910111213141516171819202122232425262728import React from &amp;apos;react&amp;apos;;import l">
 
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>20181009-Component-should-be-written-as-a-pure-function | 笔记</title>
+  <title>Component should be written as a pure function (react/prefer-stateless-function) | 笔记</title>
   
 
 
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">20181009-Component-should-be-written-as-a-pure-function</h1>
+          <h1 class="post-title" itemprop="name headline">Component should be written as a pure function (react/prefer-stateless-function)</h1>
         
 
         <div class="post-meta">
@@ -319,9 +319,8 @@
       
 
       
-        <p>vscode配置eslint，airbnb规范后，报错：</p>
+        <p>vscode配置eslint，airbnb规范后，报错：<em>Component should be written as a pure function (react/prefer-stateless-function)</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import logo from &apos;./logo.svg&apos;;</span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">class App extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">        &lt;header className=&quot;App-header&quot;&gt;</span><br><span class="line">          &lt;img src=&#123;logo&#125; className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;</span><br><span class="line">          &lt;p&gt;</span><br><span class="line">            Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.</span><br><span class="line">          &lt;/p&gt;</span><br><span class="line">          &lt;a</span><br><span class="line">            className=&quot;App-link&quot;</span><br><span class="line">            href=&quot;https://reactjs.org&quot;</span><br><span class="line">            target=&quot;_blank&quot;</span><br><span class="line">            rel=&quot;noopener noreferrer&quot;</span><br><span class="line">          &gt;</span><br><span class="line">            Learn React</span><br><span class="line">          &lt;/a&gt;</span><br><span class="line">        &lt;/header&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Component should be written as a pure function (react/prefer-stateless-function)</span><br></pre></td></tr></table></figure>
 <h2 id="解决方案1-改写为纯函数方式"><a href="#解决方案1-改写为纯函数方式" class="headerlink" title="解决方案1:改写为纯函数方式"></a>解决方案1:改写为纯函数方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import logo from &apos;./logo.svg&apos;;</span><br><span class="line">import &apos;./App.css&apos;;</span><br><span class="line"></span><br><span class="line">const App = () =&gt; (</span><br><span class="line">  &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">    &lt;header className=&quot;App-header&quot;&gt;</span><br><span class="line">      &lt;img src=&#123;logo&#125; className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;</span><br><span class="line">      &lt;p&gt;</span><br><span class="line">        Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.</span><br><span class="line">      &lt;/p&gt;</span><br><span class="line">      &lt;a className=&quot;App-link&quot; href=&quot;https://reactjs.org&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;</span><br><span class="line">        Learn React</span><br><span class="line">      &lt;/a&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
 <h2 id="解决方案2"><a href="#解决方案2" class="headerlink" title="解决方案2:"></a>解决方案2:</h2><p>在.eslintrc文件rules中加入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;react/prefer-stateless-function&quot;: [</span><br><span class="line">     0,</span><br><span class="line">     &#123;</span><br><span class="line">       &quot;ignorePureComponents&quot;: true</span><br><span class="line">     &#125;</span><br><span class="line">   ],</span><br></pre></td></tr></table></figure>
@@ -362,6 +361,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/16/20181016-css-selector/" rel="prev" title="CSS中的选择器">
+                CSS中的选择器 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -438,7 +441,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
