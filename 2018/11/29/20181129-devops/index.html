@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="  收藏 128 189devops 编辑本词条由“科普中国”百科科学词条编写与应用工作项目 审核 。DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20181129-devops">
+<meta property="og:url" content="http://yoursite.com/2018/11/29/20181129-devops/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="  收藏 128 189devops 编辑本词条由“科普中国”百科科学词条编写与应用工作项目 审核 。DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-30T02:17:59.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="20181129-devops">
+<meta name="twitter:description" content="  收藏 128 189devops 编辑本词条由“科普中国”百科科学词条编写与应用工作项目 审核 。DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/29/20181129-devops/"/>
+
+
+
+
+
+  <title>20181129-devops | 笔记</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">烂笔头</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/20181129-devops/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">20181129-devops</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-29T22:21:27+08:00">
+                2018-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  收藏 128<br> 189<br>devops 编辑<br>本词条由“科普中国”百科科学词条编写与应用工作项目 审核 。<br>DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。<br>它是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例。透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。<br>它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运营工作必须紧密合作。 [1]<br>中文名 过程、方法与系统的统称 外文名 DevOps 全    称 Development和Operations的组合 优    点 尽可能地自动化 用    途 协作与整合等<br>目录<br>1 发展介绍<br>2 现状<br>3 诉求<br>4 发布协调人<br>5 促进战略<br>6 批评<br>7 成功的关键<br>▪ 文化冲击<br>▪ 齐全工具箱<br>8 五大重点<br>9 三种便利<br>10 度量标准<br>11 使用技巧<br>12 与云混合方法<br>13 作用<br>14 工具<br>15 发展现状<br>16 大型机上使用<br>17 云应用安全<br>发展介绍编辑<br>DevOps: Development和Operations的组合<br>可以把DevOps看作开发（软件工程）、技术运营和质量保障（QA）三者的交集。<br>传统的软件组织将开发、IT运营和质量保障设为各自分离的部门。在这种环境下如何采用新的开发方法（例如敏捷软件开发），这是一个重要的课题：按照从前的工作方式，开发和部署不需要IT支持或者QA深入的、跨部门的支持，而却需要极其紧密的多部门协作。然而DevOps考虑的还不止是软件部署。它是一套针对这几个部门间沟通与协作问题的流程和方法。<br>需要频繁交付的企业可能更需要对DevOps有一个大致的了解。Flickr发展了自己的DevOps能力，使之能够支撑业务部门“每天部署10次”的要求──如果一个组织要生产面向多种用户、具备多样功能的应用程序，其部署周期必然会很短。这种能力也被称为持续部署，并且经常与精益创业方法联系起来。 从2009年起，相关的工作组、专业组织和博客快速涌现。<br>DevOps的引入能对产品交付、测试、功能开发和维护（包括──曾经罕见但如今已屡见不鲜的──“热补丁”）起到意义深远的影响。在缺乏DevOps能力的组织中，开发与运营之间存在着信息“鸿沟”──例如运营人员要求更好的可靠性和安全性，开发人员则希望基础设施响应更快，而业务用户的需求则是更快地将更多的特性发布给最终用户使用。这种信息鸿沟就是最常出问题的地方。<br>以下几方面因素可能促使一个组织引入DevOps：<br>1、使用敏捷或其他软件开发过程与方法<br>2、业务负责人要求加快产品交付的速率<br>3、虚拟化和云计算基础设施（可能来自内部或外部供应商）日益普遍<br>4、数据中心自动化技术和配置管理工具的普及<br>5、有一种观点认为，占主导地位的“传统”美国式管理风格（“斯隆模型 vs 丰田模型”）会导致“烟囱式自动化”，从而造成开发与运营之间的鸿沟，因此需要DevOps能力来克服由此引发的问题。<br>DevOps经常被描述为“开发团队与运营团队之间更具协作性、更高效的关系”。由于团队间协作关系的改善，整个组织的效率因此得到提升，伴随频繁变化而来的生产环境的风险也能得到降低。<br>DevOps对应用程序发布的影响<br>在很多企业中，应用程序发布是一项涉及多个团队、压力很大、风险很高的活动。然而在具备DevOps能力的组织中，应用程序发布的风险很低，原因如下 [2]  ：<br>（1）减少变更范围<br>与传统的瀑布式开发模型相比，采用敏捷或迭代式开发意味着更频繁的发布、每次发布包含的变化更少。由于部署经常进行，因此每次部署不会对生产系统造成巨大影响，应用程序会以平滑的速率逐渐生长。<br>（2）加强发布协调<br>靠强有力的发布协调人来弥合开发与运营之间的技能鸿沟和沟通鸿沟；采用电子数据表、电话会议、即时消息、企业门户（wiki、sharepoint）等协作工具来确保所有相关人员理解变更的内容并全力合作。<br>（3）自动化<br>强大的部署自动化手段确保部署任务的可重复性、减少部署出错的可能性。<br>与传统开发方法那种大规模的、不频繁的发布（通常以“季度”或“年”为单位）相比，敏捷方法大大提升了发布频率（通常以“天”或“周”为单位）<br>减少变更范围与传统的瀑布式开发模型相比，采用敏捷或迭代式开发意味着更频繁的发布、每次发布包含的变化更少。由于部署经常进行，因此每次部署不会对生产系统造成巨大影响，应用程序会以平滑的速率逐渐生长。加强发布协调靠强有力的发布协调人来弥合开发与运营之间的技能鸿沟和沟通鸿沟；采用电子数据表、电话会议、即时消息、企业门户（wiki、sharepoint）等协作工具来确保所有相关人员理解变更的内容并全力合作。强大的自动化部署手段能够确保部署任务的可重复性、减少部署出错的可能性。<br>现状编辑<br>很多组织将开发和系统管理划分成不同的部门。开发部门的驱动力通常是“频繁交付新特性”，而运营部门则更关注IT服务的可靠性和IT成本投入的效率。两者目标的不匹配，就在开发与运营部门之间造成了鸿沟，从而减慢了IT交付业务价值的速度 [3]  。<br>开发人员经常不考虑自己写的代码会对运营造成什么影响。他们在交付代码之前，并不邀请运营人员参与架构决策或代码评审。<br>开发人员对配置或环境进行修改之后，经常没有及时与运营人员沟通，导致新的代码不能运行。<br>开发人员在自己的机器上手工修改配置，而没有记录所有需要的步骤。想找到必要的配置参数，通常需要尝试很多不同的参数；在得到一个可工作的状态后，往往很难识别出通过哪些最小步骤就能到达该状态。<br>开发人员倾向于使用有利于快速开发的工具：对代码修改更快的反馈，更低的内存消耗，等等。这样的工具集与运营人员面对的目标运行时环境非常不同：后者对稳定性和性能的要求远胜于灵活性。<br>由于开发人员平时使用桌面电脑，他们倾向于使用为桌面用户优化的操作系统。生产环境的运行时系统通常都运行服务器操作系统上。<br>在开发过程中，系统在开发者的本地机器上运行。在运营过程中，系统经常分布在多台服务器上，例如web服务器、应用服务器、数据库服务器等等。<br>开发是由功能性需求（通常与业务需求直接相关）驱动的。<br>运营是由非功能性需求（例如可获得性、可靠性、性能等）驱动的。<br>运营人员希望尽量避免修改功能，从而降低满足非功能性需求的风险<br>如果拒绝了小的修改，但给定时间段内需要修改的总量不变，那么每次变更的规模就会变大<br>变更规模越大，风险也越大，因为其中涉及的区域越多<br>由于运营人员尝试避免变更，新功能流入生产环境的速度因此被延缓，从而延缓了开发人员将特性交付给用户使用的速度。<br>运营人员可能对应用程序内部缺乏了解，从而难以正确地选择运行时环境和发布流程。<br>开发人员可能对运行时环境缺乏了解，从而难以正确地对代码进行调整。<br>诉求编辑<br>1、更小、更频繁的变更──意味着更少的风险<br>2、让开发人员更多地控制生产环境<br>3、更多地以应用程序为中心来理解基础设施<br>4、定义简洁明了的流程<br>5、尽可能地自动化<br>6、促成开发与运营的协作<br>一般而言，当企业希望将原本笨重的开发与运营之间的工作移交过程变得流畅无碍，他们通常会遇到以下三类问题：<br>发布管理问题：<br>很多企业有发布管理问题。他们需要更好的发布计划方法，而不止是一份共享的电子数据表。他们需要清晰了解发布的风险、依赖、各阶段的入口条件，并确保各个角色遵守既定流程行事。<br>发布/部署协调问题：<br>有发布/部署协调问题的团队需要关注发布/部署过程中的执行。他们需要更好地跟踪发布状态、更快地将问题上升、严格执行流程控制和细粒度的报表。<br>发布/部署自动化问题：<br>这些企业通常有一些自动化工具，但他们还需要以更灵活的方式来管理和驱动自动化工作──不必要将所有手工操作都在命令行中加以自动化。理想情况下，自动化工具应该能够在非生产环境下由非运营人员使用。<br>要开始优化发布流程，可以从问题识别开始：看看上面提到的哪种问题在你的团队中具有最高的优先级。<br>发布协调人编辑<br>这是企业级IT组织中一个新出现的角色，其主要任务就是协调安排将企业级软件部署到预生产环境。对发布协调人的需求来自于以下几方面原因：<br>1、需要弥合开发与运营的鸿沟<br>2、基础设施日益变得复杂：为了运营web应用，需要多层基础设施和多种平台<br>3、发布频率上升（由于敏捷和迭代式开发的引入）<br>4、分布式团队：位于全球多个地点的、包含外包人员的、混合开发/测试/基础设施的团队<br>发布协调人的角色（也被称为部署协调人或集成协调人）源自发布管理或发布工程团队。这个角色与航空交通管制有些类似──实时协调不同团队的行动，有效使用共享的资源（空域、航道、跑道、航站门），达到组织的总体目标（安全起降）。<br>传统意义上的发布管理往往只关注软件变更的计划与管理，发布协调则需要控制“将特定软件变更发布至生产环境”的整个过程。这项工作需要系统地管理所有与“将代码构建并部署到生产环境”相关的技术任务，也被称为“发布工程”。<br>变更管理是跟踪企业IT环境中各种变化──不管是应用程序还是基础设施的变化──的基本原则。变更管理是ITIL v3的核心之一。<br>促进战略编辑<br>想要为DevOps和应用灵活性而重塑团队，需要领导层的勇气和无私奉献。当然，它也需要花费时间和金钱，并且需要在团队成员筛选上做出艰难的决定。<br>为了促进DevOps战略，调整考核和激励机制是必要的。如果依然只根据敲出代码的生产力来奖励开发人员，或者根据基础设施的可靠性来奖励运维人员，那么，什么都不会改变。相反，应该奖励系统创建和运维的整体团队，并且根据团队工作的全部要素来确定奖励。<br>围绕业务系统而不是职责来组织工作，这就是DevOps打破IT分组壁垒的寓意。一个团队应该有开发人员创建代码，从用户界面到业务逻辑和数据结构，也应该有运维人员负责操作自动化和部署。<br>人们需要知道他们需要对什么样的系统负责，而并不仅仅是毫无责任地从一个系统换到另一个系统。<br>团队待在一起，共同为他们的应用和系统负责。<br>不要制造一个团队支持太多应用的局面。在这个预算缩减的年代很难考虑周全，但是经历这种融合转变之后，团队将更加富有成效，并且不需要额外人员就能应对需求的增长。<br>需要充足的专家参与项目和为团队提供支持 ——这些人都是不同学科的大师和专家。他们为系统提供支持，但是不会长期指派给某一个系统。他们不需要对这些系统负责。<br>全面自动化 —— 部署、 升级、 扩展、 维护、 数据卫生、 测试、 监测、 安全和策略管理。在自动化方面投入巨资，目标是100%的自动化，不考虑低于90%的可能性。但是，全面自动化也可能会引起自动化泛滥。集中审查和调整可以控制Chef或Puppet脚本库的无序增长。<br>针对整个团队进行奖励和表彰。成功离不开大家共同的努力，同样，问题需要整个团队自我反省。系统团队应该承认专家们的贡献 ，对表现杰出的专家给予奖励。<br>围绕建设运营融合的原则制定新的企业体系结构标准。这将确保系统符合运维的需求。<br>DevOps战略必须获取本组织自顶向下的全面支持。整个行政领导团队 ——不只是首席信息官 ——应知道它为什么重要和怎样使它取得成功。<br>请记住，这是重大的文化和组织变革，多分配些时间开展培训和组织开发活动。如果变革得太快而忘了和您的所有团队步调一致，将整天陷入失误和冲突——最后满盘皆输。 [4]<br>批评编辑<br>有IT博客对“DevOps”这个标签进行了批评，认为它不过是系统管理员的精英至上论俱乐部在老调重谈一些现有的问题（参见“对此运动的批评”）。<br>成功的关键编辑<br>文化冲击<br>平稳的文化过渡是让DevOps获得长期成功应用和增强发布软件产品的综合能力的关键。第一步是，明确DevOps的定义，调动开发和运营部门之间的协作，鼓励运营人员采纳软件开发方法，并利用云计算基础设施来完成真实的测试和代码部署。<br>在软件开发、测试、质量保证（QA）、集成、预生产和生产部署等方面的任何旧小团队必须打散，因为每个小团队都可能拖延开发周期并且带来不可预料的问题。<br>以上策略能更好地整合开发和运营人员，通过整合团队成员来产生效益。例如，在讨论运营解决方案或扰乱事后评估报告时应该邀请开发人员加入。相反地，应该邀请运营人员列席开发人员规划会议。让交叉组合的工作模式成为制度，可以让团队之间合作融洽，消除沟通不畅导致的延误或疏忽，使DevOps的推进更加有效。<br>这种文化上的改革并不容易。它需要公司提供统一的考核标准，以相同的形式衡量开发人员和运维人员的业绩。培养一种团队精神，让大家一起向一个共同的目标努力，而不再只是为了从前各自的狭隘的小团体目标。在这里有时可以运用岗位轮换或者知识共享的方法<br>齐全工具箱<br>想要超越文化的影响，组织还必须依靠各种 DevOps 工具。例如，开发人员编写代码需要工具、QA测试人员需要用工具完成新版软件的部署，环境准备、将新代码在测试系统和生产系统之间迁移也必须用到云资源调度工具。Fletcher表示，工具本身都不是问题，重要的是能够让各种工具互相配合，在软件的生命周期内提供支持。<br>当前在应用程序发布自动化工具市场已经存在众多的供应商。运营工具方面的供应商有BMC Software, CA Technologies Inc. 和 XebiaLabs Inc.等公司。软件开发工具方面的供应商包括IBM，Electric Cloud Inc.和Serena Software Inc。<br>关于开发人员工作流程、架构设计和软件发布工具方面的专业供应商也在不断涌现，这些供应商包括Atlassian, CollabNet Inc., Rally Software, ThoughtWorks Inc. ，OpenMake Software Inc.等公司。在评估这些新供应商时，应明智地预计到这些公司随时可能会被并购，其产品可用性和未来发展也会因此受影响——请记得在选择新的软件发布自动化产品时多留个心眼。 [5]<br>五大重点编辑<br>1、警惕总体安全风险。虚拟化、云、BYOD以及软件定义网络（SDN）等新兴技术不断得到采用意味着网络变得越来越复杂，愈发的异构化，安全风险也是如此。这其中的巨大挑战是迄今为止，安全被视为是事后想法，而安全组织又被认为是企业的抑制因子，只会告诉企业什么做不了而不是如何安全地做事情。这是一个文化问题，需要安全、开发者以及运营团队培育出此前未有过的一定水平的信任和协作。做到这一点的唯一办法是逐步地、带着警惕地去做。 [6]<br>2、观察安全风险变化，把DevOps看作一种可将开发者和IT运营引向更快更高效的部署、运营及升级应用的协作理念和流程很重要。<br>3、注意可伸缩性。企业和技术的人必须在功能、推向市场的时间、成本以及风险承受能力等方面做出权衡。你需要有合适的衡量目标，包括特定模式下的那些端点上有多少用户，有多少并发请求。<br>4、争取实现易用—DevOps就是自动化和可重复性。<br>5、管理网关。尽管新的目标是在开发和运营团队之间建设最好的文化，但为了确保产品环境保持稳定，在这两个职能之间保留一些网关仍然是好的。 [6]<br>三种便利编辑<br>将人置于技术之前<br>投资在那些关注技术的使用，以及如何采用持续开发、测试、集成、部署和操作的培训计划上。<br>安全和管理<br>对云应用开发的管理必须是系统性的，构建在DevOps流程中的每一步，包括对使用的服务或API，以及服务发现和服务的依赖上所做的限制的政策。<br>作出改变<br>DevOps需要改变和发展以跟上新兴的理念和技术。在设计你的DevOps流程时始终要将变化考虑在内。 [7]<br>度量标准编辑<br>●<br>开发应用所花费的最高时间：帮助理解可以多快的开发应用<br>●<br>失败部署的百分比：看出是否部署成功<br>●<br>客户ticket数：显示产生了多少问题<br>●<br>故障恢复的平均时间：显示从应用程序bug或者故障恢复需要多长时间<br>●<br>用户数：显示应用程序对于用户而言的有用程度 [8]<br>使用技巧编辑<br>Web服务器负载飙升的分析与处理<br>前提：日志已经通过logrotate按天切分，其内容类似下面的样子：<br>1.2.3.4 - - [01/Jan/2013:00:01:01 +0800] “GET /path HTTP/1.1” …<br>利用AWK，我们可以很方便的计算一天中每分钟的访问量是多少：<br>shell&gt; awk -F: ‘ {count [$2”:”$3]++}<br>　　END {for (minute in count) print minute, count [minute] } ‘ /path/to/log | sort &gt; count.log<br>下面列出生成的count.log文件中的部分数据，结果一目了然，不多说了：<br>18:55 14450<br>　　18:56 14926<br>　　18:57 15645<br>　　18:58 16678<br>　　18:59 19032<br>　　19:00 29134<br>　　19:01 34665<br>　　19:02 35558<br>　　19:03 35545<br>　　19:04 35829<br>　　19:05 35608<br>如果想要以秒为单位来统计，也是类似的方法。 [9]<br>与云混合方法编辑<br>步骤一：使用云友好工具<br>DevOps的是客户托管的命令中心，在这之中每一个管理服务器都直接连接。对于一个可访问命令中心的新实例，它所需要的只是在本地服务器上的代理运行。这很容易就陷入到云实例中。有了与应用、数据库和配置信息命令绑定的解决方案，那么跨云进行无论是小的，还重大的更改都很容易。<br>步骤二：不要忘本<br>虽然自动化将会变得越来越重要，但了解发生的什么还是很重要的。这意味着要掌握部署流程的所有步骤。否则，在解决故障或定制化你的自动化工具时，你就是在抓瞎。<br>步骤三：对团队进行培训<br>随着云和新的工具承担了大量的工作负载，运维工作似乎变得越来越不重要。但同时随着云复杂性的增加，实际上很难找到合格的运维人员。在真实世界中的持续应用管理备受关注，而且找到适合大局的人很关键。尽可能地让你的开发人员学到更多关于运维的知识可以消除一些痛点，因为在他们的编程中他们可以做出更明智的选择，从而避免常见错误。 [10]<br>作用编辑<br>DevOps是Develop与Operations的缩写，它是企业内开发、技术运营和质量保障这三方面工作的融合，用于促进开发、技术运营和质保部门之间的沟通、协作与整合。有研究显示，在那些引入了DevOps概念的企业中，开发与运营人员在设计、构建、测试工作中共同在内部应用上进行协作之后，可以将产品开发的效率提升20%。<br>然而最为重要的如何成为一名真正的消费者用户并像消费者用户那样来考虑这整件事情的意义所在，无论是成为企业内部用户的还是外部用户。事实上，如何提升最终用户体验一直是DevOps战略发展的第一驱动力，有68%的企业是这样认为的，第二个需求是为了提升开发与运营团队之间的协作水平与效率，有61%的受访者选择了这一项。企业的移动与云计算转型趋势的兴起，同样也是企业引入DevOps的重要原因，有52%与43%的人分别选择了这两项。 [11]<br>工具编辑<br>即便是具有最高度功能化的DevOps团队也是需要第三方工具来管理诸如云计算这类的分布式环境。对于这样的环境来说，某些工具是特别有用的。<br>诸如FlowDock或HipChat这样的DevOps实用工具能够帮助开发团队的成员互相以及与DevOps人员保持联系。诸如Asana或Basecamp这类服务能够有助于跟踪开发任务以及在应用发布中的注意事项。<br>诸如以客户为中心的支持门户网站可让用户直接与管理层或开发团队进行需求沟通。这将有助于触发新的或改进的功能，并确保客户的需求能够得到满足。一个DevOps团队能够帮助建立这些服务，并让团队成员了解相关技术。 [12]<br>无论是纵向集成还是横向集成，DevOps都需要通过工具链与持续集成、交付、反馈与优化进行端到端整合。华为基于二十几年的研发实践，并融合DevOps等理念方法，打造了软件开发云服务，希望为企业提供一站式的云上开发工具平台。据了解，华为软件开发云提供了项目管理、配置管理、代码检查、编译构建、测试、部署、发布等端到端地覆盖软件生命周期的相关服务。 [13]<br>发展现状编辑<br>在云计算、大数据等技术颠覆性趋势继续在应用经济下发挥作用的同时，DevOps也已经稳健地在业务思维方式中占有一席之地，并将在2015年扮演主要角色。在应用驱动、云连接、移动化的大环境下，DevOps战略将助力业务增值。2015年对于很多公司来说是DevOps之路的第一步。<br>紧跟行业趋势、进行新的技术变革往往会带来发展的阵痛，DevOps也同样要经历这一过程。中国及全球各地的企业正在认识到DevOps可以助力软件开发速度加快，软件应用质量提升，更重要的是与业务目标更完美地结合。如果说，2014年DevOps还在谋求广泛的认可，那么2018年DevOps将走到舞台中心，被整合成为企业战略的重要组成部分。 [14]<br>改变流程促进软件质量的改进<br>与DevOps相伴的一个变化是向持续集成的演进。软件开发和部署的速度是其中一个驱动因素，使得开发和运维的合并不是空谈而成为必需。 [15]<br>大型机上使用编辑<br>devops加快交付速度<br>devops填补了之前的空白部分，devops通过建立一个完整的生命活动周期，devops关注如何更好地获取IT运维团队的反馈。devops将敏捷原则应用于管理领域，devops使得开发人员和管理员可以进行毫无障碍的沟通。<br>devops还有很多不足，devops导致代码交接容易出现延迟。devops同样的情况也会出重大bug的修复过程中。<br>devops运行时软件优化<br>devops可以在两个方面提升知识水平和程序质量。首先，devops对于许多较新的、面向对象的操作系统，比如Linux，devops很有可能不关机而一直保持运行状态。因此，devops容易出现问题，比如错误的垃圾回收机制以及不能正确重新组织关系型数据存储。<br>devops借鉴了大型机管理员积累的经验来重新认识软件平台类型，以及可能引起这些类型问题的开发和/或测试流程。devops开发团队可以使用嵌入式模式保护代码来部署代码库和测试环境。<br>devops的目标是在测试环境中，或者devops以代码的形式嵌入到应用程序自身当中以获取大型机复杂性的现有知识，devops不希望大型机管理员发现问题所在。devops并不仅可以使得开发人员和测试人员的工作更加轻松，同样可以简化管理员的工作。<br>devops提高大型机管理员工作效率<br>devops可以改善这种大型机管理模式，devops提高大型机管理员的工作效率。首先，devops通过实现标准配置和Linux相关任务的自动化，devops可以保证管理员拥有更多时间来“救火”。devops通过确保解决方案是长期有效和高质量的来减少对于处理紧急情况的处理需求。此外，devops让管理员也参与敏捷开发流程，和开发团队进行沟通，当开发团队拥有了一个能够快速定位问题并且修复运行时问题的测试工具或者代码库之后，devops就可以减少管理员修复bug以及与开发部门协调所花费的时间。 [16]<br>云应用安全编辑<br>1.自动化手动安全测试<br>自动化在DevOps中很重要因为它提供了准确性和速度。应用交付需要高效，而手动安全测试就是不够快。更重要的是，第三方在外部手动测试中往往会漏掉测试错误。<br>尽管组织不需要完全抛弃手动测试，他们应该将自动化过程提上日程。安全团队应该确定如何自动实施他们的手动过程。当嵌入坚固DevOps到你现有的云环境中时，对安全测试工具进行审核以确保可以将其加入到持续集成和应用交付过程中。然后，删除或替换不适合DevOps的工具或者不能与你的云业务集成的工具。<br>2．尽早优先处理安全性<br>尽管IT行业采用敏捷和DevOps过程的比例很大，安全测试周期仍然还是基于传统繁琐的瀑布模型。这意味着许多组织忘记做安全资格测试，如PCI检查和风险评估，直到几乎为时已晚。为了更有效地同步安全和DevOps周期，从开发过程一开始就进行安全测试。<br>3．建立跨职能团队参与<br>实施坚固DevOps，安全团队需要开发和运营团队紧密合作。当这么做时，安全专家应该保持开放的心态去了解他们同事的文化和语言。这样，这种关系就成了一种真正的伙伴关系而不是一种机械的形式。</p>
+<ol>
+<li>在运营中嵌入安全工具<br>在一个坚固DevOps模型中，安全团队应该让组织的其他部门也了解安全工具。通过分享技术知识，企业将有更广阔的劳动力，可以解决在第一线的安全问题。为了帮助小的安全团队在更大的DevOps组织内扩展其业务影响力，可以把安全工具包括在通用的操作工具包里。<br>5．监控和审计集成过程<br>紧密监控和记录集成和交付流程，以确保高质量的软件。这也有助于识别安全问题。使用粒度变化日志为审计人员准备信息，以及可扩展的云安全监测工具。这些工具应能够自动跟踪和测量新添加的资源。此外，它们应汇总监测数据和快速检测实际的问题，同时消除误报。 [17]<br>参考资料</li>
+<li>DevOps  ．维基百科[引用日期2014-03-01]</li>
+<li>霍娜. 2017年DevOps三大趋势预测[N]. 中国信息化周报,2017-03-06(024).</li>
+<li>牛晓玲,吴蕾.DevOps发展现状研究[J].电信网技术,2017(10):48-51.</li>
+<li>重塑IT组织 实现DevOps战略  ．TechTarget数据中心．2013-10-22[引用日期2015-01-21]</li>
+<li>DevOps成功的两个关键  ．TechTarget[引用日期2015-07-11]</li>
+<li>五大DevOps最佳实践实现安全、可伸缩和性能  ．TechTarget[引用日期2015-08-12]</li>
+<li>DevOps实施的三种IT障碍  ．TechTarget云计算[引用日期2016-03-24]</li>
+<li>跟踪DevOps指标 增加业务敏捷度  ．TechTarget[引用日期2015-09-17]</li>
+<li>DevOps的三板斧  ．TechTarget[引用日期2015-10-31]</li>
+<li>云计算如何牵手DevOps提升生产率？  ．TechTarget[引用日期2015-10-31]<br>展开全部<br>词条标签：<br>科学 ， 学科</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/29/20181129-restful-api-principles/" rel="next" title="restful api 的设计准则">
+                <i class="fa fa-chevron-left"></i> restful api 的设计准则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/02/20181202-lock-in-db/" rel="prev" title="数据库中的锁">
+                数据库中的锁 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">blacksmith</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">blacksmith</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

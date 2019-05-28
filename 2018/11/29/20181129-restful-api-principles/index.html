@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="RESTful API教程：学习关键的Web服务设计原则来自公众号EAWorld。 RESTful APIs tutorial: Learn key web service design principles 原则： 有意义的、唯一的URL， GET不进行写操作， PUT和DELETE要具备幂等性 审慎的使用POST。  有意义的、唯一的URL，我们强调的第一个重要原则是，资源应该始终通过惟一标识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="restful api 的设计准则">
+<meta property="og:url" content="http://yoursite.com/2018/11/29/20181129-restful-api-principles/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="RESTful API教程：学习关键的Web服务设计原则来自公众号EAWorld。 RESTful APIs tutorial: Learn key web service design principles 原则： 有意义的、唯一的URL， GET不进行写操作， PUT和DELETE要具备幂等性 审慎的使用POST。  有意义的、唯一的URL，我们强调的第一个重要原则是，资源应该始终通过惟一标识">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-11T05:11:48.791Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="restful api 的设计准则">
+<meta name="twitter:description" content="RESTful API教程：学习关键的Web服务设计原则来自公众号EAWorld。 RESTful APIs tutorial: Learn key web service design principles 原则： 有意义的、唯一的URL， GET不进行写操作， PUT和DELETE要具备幂等性 审慎的使用POST。  有意义的、唯一的URL，我们强调的第一个重要原则是，资源应该始终通过惟一标识">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/29/20181129-restful-api-principles/"/>
+
+
+
+
+
+  <title>restful api 的设计准则 | 笔记</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">烂笔头</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/29/20181129-restful-api-principles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">restful api 的设计准则</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-29T21:54:54+08:00">
+                2018-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="RESTful-API教程：学习关键的Web服务设计原则"><a href="#RESTful-API教程：学习关键的Web服务设计原则" class="headerlink" title="RESTful API教程：学习关键的Web服务设计原则"></a>RESTful API教程：学习关键的Web服务设计原则</h2><p>来自公众号EAWorld。</p>
+<p><a href="https://www.theserverside.com/video/A-RESTful-APIs-tutorial-Learn-key-web-service-design-principles" target="_blank" rel="noopener">RESTful APIs tutorial: Learn key web service design principles</a></p>
+<h3 id="原则："><a href="#原则：" class="headerlink" title="原则："></a>原则：</h3><ul>
+<li>有意义的、唯一的URL，</li>
+<li>GET不进行写操作，</li>
+<li>PUT和DELETE要具备幂等性</li>
+<li>审慎的使用POST。</li>
+</ul>
+<h3 id="有意义的、唯一的URL，"><a href="#有意义的、唯一的URL，" class="headerlink" title="有意义的、唯一的URL，"></a>有意义的、唯一的URL，</h3><p><strong>我们强调的第一个重要原则是，资源应该始终通过惟一标识它们的URL访问</strong> </p>
+<p>如果RESTful JavaScript客户端只对wins感兴趣，URL应该遵循可预测的格式，其中wins是score的子资源：<br><a href="http://www.mcnz.com/rps/score/wins" target="_blank" rel="noopener">www.mcnz.com/rps/score/wins</a> → returns { “wins”:”5”}<br>事实上，返回JSON格式的wins可能有点过头了。只要将wins的数目以文本格式返回即可，所有客户端都可以轻松地使用该结果，而不管它们是否可以解析JSON。因此，最好采取以下措施：<br><a href="http://www.mcnz.com/rps/score/wins" target="_blank" rel="noopener">www.mcnz.com/rps/score/wins</a> → returns “5”<br>looses和ties应该遵循类似的RESTful URL格式：<br><a href="http://www.mcnz.com/rps/score/losses" target="_blank" rel="noopener">www.mcnz.com/rps/score/losses</a> → returns “3”<br><a href="http://www.mcnz.com/rps/score/ties" target="_blank" rel="noopener">www.mcnz.com/rps/score/ties</a> → returns “0”</p>
+<h3 id="RESTful设计规则：GET调用不能改变服务器状态"><a href="#RESTful设计规则：GET调用不能改变服务器状态" class="headerlink" title="RESTful设计规则：GET调用不能改变服务器状态"></a>RESTful设计规则：GET调用不能改变服务器状态</h3><p>首要原则是，GET调用永远不能改变服务器上任何RESTful资源的状态。</p>
+<h3 id="RESTful-PUT和DELETE方法需要遵守幂等原则"><a href="#RESTful-PUT和DELETE方法需要遵守幂等原则" class="headerlink" title="RESTful PUT和DELETE方法需要遵守幂等原则"></a>RESTful PUT和DELETE方法需要遵守幂等原则</h3><p>虽然并不是一个严格的规则，但PUT和DELETE方法大致映射了保存和删除的概念。如果设计人员想要从服务器中删除资源，他们应该使用HTTP DELETE方法。如果需要创建新资源或需要更新现有资源，则应使用PUT方法。</p>
+<p>PUT和DELETE方法对于保存和删除数据来说是相对简单的。但这也是RESTful Java API设计人员经常遇到麻烦的另一个陷阱。这就引出了第二条规则：HTTP方法要具备幂等性。<br>如果某件事是幂等的，意味着它可以重复进行，但结果总是一样的。</p>
+<p>例如，假设客户端发出RESTful DELETE请求删除编号为271的记录。这个调用可进行一次，也可能进行100次。无论如何，最终的结果必须是一样的，即编号271的寿终正寝。下面的场景就是幂等的。</p>
+<p>HTTP DELETE || <a href="http://www.mcnz.com/rps/score?record=271" target="_blank" rel="noopener">www.mcnz.com/rps/score?record=271</a> #Good RESTful Java design</p>
+<p>反例是，删除数据库中最老的10条记录的请求。</p>
+<p>HTTP DELETE || <a href="http://www.mcnz.com/rps/score?oldRecordsToDelete=10" target="_blank" rel="noopener">www.mcnz.com/rps/score?oldRecordsToDelete=10</a> #Bad RESTful Java design</p>
+<p>在反例中，RESTful URL将使数据库在每次新调用时处于不同的状态,直至删除数据库中的每条记录。这个方法不是幂等的，因此违反了基本的RESTful API原则。</p>
+<p>PUT方法也必须是幂等的。因此，如果需要将wins的数量从数据库中的当前值更改为10，那么一个好的RESTful Java API将如下所示：</p>
+<p>HTTP PUT || <a href="http://www.mcnz.com/rps/score/wins?value=10" target="_blank" rel="noopener">www.mcnz.com/rps/score/wins?value=10</a></p>
+<p>我们可以一次又一次地调用此方法，每次调用之后，服务器将处于相同的状态：wins的得分是10。这个RESTful Java API是幂等的。反例是，每次调用该方法时添加10次win：</p>
+<p>HTTP PUT || <a href="http://www.mcnz.com/rps/score/wins?add=10" target="_blank" rel="noopener">www.mcnz.com/rps/score/wins?add=10</a></p>
+<p>这个方法不是幂等的，因为每次调用时，wins的数目会跳转到一个新的值。wins的得分开始时是10，第二次调用时20次，下一次30次。使用此方法，资源的最终状态是不可预测的。它不是幂等的，也不是好的RESTful API设计。</p>
+<p>从技术上讲，URL末尾的查询参数应该仅用于查询。在本例中，我们使用查询参数向服务器传递有效负载。这样做使示例更简单，但也突破了查询参数本来的用途。在未来的RESTful API设计教程中，我们将演示如何在PUT调用期间将JSON字符串作为有效负载的一部分来进行传递，这是比使用查询参数更好的设计。</p>
+<h3 id="保守的使用RESTful-API设计的瑞士军刀：POST方法"><a href="#保守的使用RESTful-API设计的瑞士军刀：POST方法" class="headerlink" title="保守的使用RESTful API设计的瑞士军刀：POST方法"></a>保守的使用RESTful API设计的瑞士军刀：POST方法</h3><p>我们已经知道，从数据库中删除10条最老的记录是对DELETE方法的错误使用，而简单的数字增量则是PUT方法的糟糕应用，这是否意味着我们不能用RESTful API来完成这些事情？当然不是。</p>
+<p>目前为止，我们建立了两个非常重要的规则：</p>
+<p>GET调用不能更改资源的状态。</p>
+<p>PUT和DELETE方法必须是幂等的。</p>
+<p>但是请注意，我们还没有提到POST方法。在上述规则之外的任何场景中，都可以使用POST方法。因此，如果要从数据库中删除10条最老的记录，可以使用POST方法。如果想将wins得分加10，同样可以使用POST方法。POST方法，从某种意义上讲，是RESTful设计的瑞士军刀。</p>
+<p>HTTP POST || <a href="http://www.mcnz.com/rps/score/wins?add=10" target="_blank" rel="noopener">www.mcnz.com/rps/score/wins?add=10</a> </p>
+<p>HTTP POST || <a href="http://www.mcnz.com/rps/score?oldRecordsToDelete=10" target="_blank" rel="noopener">www.mcnz.com/rps/score?oldRecordsToDelete=10</a> </p>
+<p>过度使用POST方法本身也是RESTful设计的误区之一。<br>通常，我们会看到一个被认为是RESTful的系统中，设计人员投机取巧地将API的所有排列都设计为POST调用。仅仅因为没有违反重要的RESTful原则，并不意味着已经开发了一个有效的RESTful API。当RESTful API设计者对他们的问题域采取“基于服务”的方法时，经常会出现频繁使用POST方法的趋势。创建RESTful API时，始终在系统中应用“基于资源”的方式十分重要。</p>
+<p>白小白：<br>此处实际上稍微令人费解，原因在于基于服务和基于资源的概念在本文中并未明确的给出解释。其实可以将此区别理解为传统的SOAP与REST的区别之一，这里有一篇文章我觉得写的很好（ <a href="https://blog.csdn.net/caisini_vc/article/details/48465731" target="_blank" rel="noopener">https://blog.csdn.net/caisini_vc/article/details/48465731</a> ）。比如，一个删除用户的操作，在基于服务的模式下，所有的 SOAP 消息经过代理服务器，只能看到（<a href="http://localhost:8182/v1/soap/servlet/messagerouter" target="_blank" rel="noopener">http://localhost:8182/v1/soap/servlet/messagerouter</a>, HTTP POST）这样的信息，如果代理服务器想知道当前的 HTTP 请求具体做的是什么，必须对 SOAP 的消息体解码。而在基于资源的模式下，URL的描述是（<a href="http://localhost:8182/v1/users/{username}，DELETE），这不仅有利于服务器的识别，更可以实现安全控制。" target="_blank" rel="noopener">http://localhost:8182/v1/users/{username}，DELETE），这不仅有利于服务器的识别，更可以实现安全控制。</a><br>还有很多需要学习的东西，比如将有效负载数据传递给服务器的最佳实践，如何构造URL以识别资源，以及如何避免在“基于资源的设计”中应用了“基于服务的方法”这样的误区。我们将在随后的RESTful API教程中介绍这些内容。但是，构建URL和正确使用HTTP方法是每一个优雅的“基于资源的API”设计的坚实基础。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/26/20181126-git-cancel-update/" rel="next" title="git中的撤销更改">
+                <i class="fa fa-chevron-left"></i> git中的撤销更改
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/29/20181129-devops/" rel="prev" title="20181129-devops">
+                20181129-devops <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">blacksmith</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful-API教程：学习关键的Web服务设计原则"><span class="nav-number">1.</span> <span class="nav-text">RESTful API教程：学习关键的Web服务设计原则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原则："><span class="nav-number">1.1.</span> <span class="nav-text">原则：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有意义的、唯一的URL，"><span class="nav-number">1.2.</span> <span class="nav-text">有意义的、唯一的URL，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful设计规则：GET调用不能改变服务器状态"><span class="nav-number">1.3.</span> <span class="nav-text">RESTful设计规则：GET调用不能改变服务器状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-PUT和DELETE方法需要遵守幂等原则"><span class="nav-number">1.4.</span> <span class="nav-text">RESTful PUT和DELETE方法需要遵守幂等原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保守的使用RESTful-API设计的瑞士军刀：POST方法"><span class="nav-number">1.5.</span> <span class="nav-text">保守的使用RESTful API设计的瑞士军刀：POST方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">blacksmith</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

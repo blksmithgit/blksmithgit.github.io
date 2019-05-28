@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="websocketsockette 一个websocket的客户端封装，支持断线重连 12345678910111213141516171819 const Sockette = require(&amp;apos;sockette&amp;apos;);const ws = new Sockette(&amp;apos;ws://localhost:3000&amp;apos;, &amp;#123;  timeout: 5e3,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20181102">
+<meta property="og:url" content="http://yoursite.com/2018/11/02/20181102/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="websocketsockette 一个websocket的客户端封装，支持断线重连 12345678910111213141516171819 const Sockette = require(&amp;apos;sockette&amp;apos;);const ws = new Sockette(&amp;apos;ws://localhost:3000&amp;apos;, &amp;#123;  timeout: 5e3,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-02T14:20:30.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="20181102">
+<meta name="twitter:description" content="websocketsockette 一个websocket的客户端封装，支持断线重连 12345678910111213141516171819 const Sockette = require(&amp;apos;sockette&amp;apos;);const ws = new Sockette(&amp;apos;ws://localhost:3000&amp;apos;, &amp;#123;  timeout: 5e3,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/02/20181102/"/>
+
+
+
+
+
+  <title>20181102 | 笔记</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">烂笔头</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/20181102/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">20181102</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T21:07:10+08:00">
+                2018-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><h3 id="sockette"><a href="#sockette" class="headerlink" title="sockette"></a><a href="https://github.com/lukeed/sockette" target="_blank" rel="noopener">sockette</a></h3><p> 一个websocket的客户端封装，支持断线重连</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> const Sockette = require(&apos;sockette&apos;);</span><br><span class="line"></span><br><span class="line">const ws = new Sockette(&apos;ws://localhost:3000&apos;, &#123;</span><br><span class="line">  timeout: 5e3,</span><br><span class="line">  maxAttempts: 10,</span><br><span class="line">  onopen: e =&gt; console.log(&apos;Connected!&apos;, e),</span><br><span class="line">  onmessage: e =&gt; console.log(&apos;Received:&apos;, e),</span><br><span class="line">  onreconnect: e =&gt; console.log(&apos;Reconnecting...&apos;, e),</span><br><span class="line">  onmaximum: e =&gt; console.log(&apos;Stop Attempting!&apos;, e),</span><br><span class="line">  onclose: e =&gt; console.log(&apos;Closed!&apos;, e),</span><br><span class="line">  onerror: e =&gt; console.log(&apos;Error:&apos;, e)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ws.send(&apos;Hello, world!&apos;);</span><br><span class="line">ws.json(&#123;type: &apos;ping&apos;&#125;);</span><br><span class="line">ws.close(); // graceful shutdown</span><br><span class="line"></span><br><span class="line">// Reconnect 10s later</span><br><span class="line">setTimeout(ws.reconnect, 10e3);</span><br></pre></td></tr></table></figure>
+<h3 id="websocket-handler"><a href="#websocket-handler" class="headerlink" title="websocket-handler"></a><a href="https://github.com/kyuuseiryuu/websocket-handler" target="_blank" rel="noopener">websocket-handler</a></h3><p>A WebSocket Server handler to quick handle WebSocket and make manage WebSocket easier.</p>
+<ul>
+<li>clone this repository</li>
+<li>run npm i &amp;&amp; npm start</li>
+<li>now server is running…</li>
+</ul>
+<h3 id="WebSocket：5分钟从入门到精通"><a href="#WebSocket：5分钟从入门到精通" class="headerlink" title="WebSocket：5分钟从入门到精通"></a><a href="https://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;mid=2651495497&amp;idx=1&amp;sn=8e604cb2fd52e707055c46fd62b32a49&amp;chksm=80f19581b7861c9748ff54b3769ca7ad59d51410dd7c222c49f15fd2e63728c2f347471483c4&amp;mpshare=1&amp;scene=1&amp;srcid=0109cWu6cKRRRWjvoFHnFpJR%23rd" target="_blank" rel="noopener">WebSocket：5分钟从入门到精通</a></h3><ul>
+<li>WebSocket可以在浏览器里使用</li>
+<li>支持双向通信</li>
+<li>使用很简单</li>
+</ul>
+<h3 id="WebSocket详解（二）：技术原理、代码演示和应用案例"><a href="#WebSocket详解（二）：技术原理、代码演示和应用案例" class="headerlink" title="WebSocket详解（二）：技术原理、代码演示和应用案例"></a><a href="http://www.52im.net/thread-326-1-1.html" target="_blank" rel="noopener">WebSocket详解（二）：技术原理、代码演示和应用案例</a></h3><p>WebSocket 客户端 API 示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var ws = new WebSocket(“ws://echo.websocket.org”); </span><br><span class="line"> ws.onopen = function()&#123;ws.send(“Test!”); &#125;; </span><br><span class="line"> ws.onmessage = function(evt)&#123;console.log(evt.data);ws.close();&#125;; </span><br><span class="line"> ws.onclose = function(evt)&#123;console.log(“WebSocketClosed!”);&#125;; </span><br><span class="line"> ws.onerror = function(evt)&#123;console.log(“WebSocketError!”);&#125;;</span><br></pre></td></tr></table></figure>
+<p>第一行代码是在申请一个 WebSocket 对象，参数是需要连接的服务器端的地址，同 HTTP 协议开头一样，WebSocket 协议的 URL 使用 ws://开头，另外安全的 WebSocket 协议使用 wss://开头。</p>
+<p>第二行到第五行为 WebSocket 对象注册消息的处理函数，WebSocket 对象一共支持四个消息 onopen, onmessage, onclose 和 onerror，有了这 4 个事件，我们就可以很容易很轻松的驾驭 WebSocket。</p>
+<p>当 Browser 和 WebSocketServer 连接成功后，会触发 onopen 消息；如果连接失败，发送、接收数据失败或者处理数据出现错误，browser 会触发 onerror 消息；当 Browser 接收到 WebSocketServer 发送过来的数据时，就会触发 onmessage 消息，参数 evt 中包含 Server 传输过来的数据；当 Browser 接收到 WebSocketServer 端发送的关闭连接请求时，就会触发 onclose 消息。我们可以看出所有的操作都是采用异步回调的方式触发，这样不会阻塞 UI，可以获得更快的响应时间，更好的用户体验。</p>
+<h4 id="WebSocket-案例分析"><a href="#WebSocket-案例分析" class="headerlink" title="WebSocket 案例分析"></a>WebSocket 案例分析</h4><p>以下我们以一个真实的客户案例来分析说明 WebSocket 的优势及具体开发实现（为保护客户隐私，以下描述省去客户名，具体涉及业务细节的代码在文中不再累述）。</p>
+<p>7.1案例介绍</p>
+<p>该客户为一个移动设备制造商，移动设备装载的是 Android/IOS 操作系统，设备分两类（以下简称 A，B 两类），A 类设备随时处于移动状态中，B 类设备为 A 类设备的管理控制设备，客户需要随时在 B 类设备中看到所属 A 类设备的地理位置信息及状态信息。如 A 类设备上线，离线的时候，B 类设备需要立即获得消息通知，A 类设备上报时，B 类设备也需要实时获得该上报 A 类设备的地理位置信息。</p>
+<p>为降低跨平台的难度及实施工作量，客户考虑轻量级的 Web App 的方式屏蔽 Android/IOS 平台的差异性，A 类设备数量众多，且在工作状态下 A 类设备处于不定时的移动状态，而 B 类设备对 A 类设备状态变化的感知实时性要求很高（秒级）。</p>
+<p>根据以上需求，A/B 类设备信息存放在后台数据库中，A/B 类设备的交互涉及 Web 客户端/服务器频繁和高并发的请求-相应，如果使用传统的 HTTP 请求-响应模式，B 类设备的 Web App 上需要对服务进行轮询，势必会对服务器带来大的负载压力，且当 A 类设备没有上线或者上报等活动事件时，B 类设备的轮询严重浪费网络资源。</p>
+<p>7.2解决方案</p>
+<p>综上所述，项目采用 WebSocket 技术实现实时消息的通知及推送，每当 A 类设备/B 类设备上线登录成功即打开 WebSocket 的 HTTP 长连接，新的 A 类设备上线，位置变化，离线等状态变化通过 WebSocket 发送实时消息，WebSocket Server 端处理 A 类设备的实时消息，并向所从属的 B 类设备实时推送。</p>
+<p>WebSocket 客户端使用 jQuery Mobile（jQuery Mobile 移动端开发在本文中不再详细描述，感兴趣的读者可以参考jQuery Mobile 简介)，使用原生 WebSocket API 实现与服务端交互。</p>
+<p>服务端沿用客户已有的应用服务器 Tomcat 7.0.33 版本，使用 Apache 自定义 API 实现 WebSocket Server 端，为一个上线的 A 类设备生成一个 WebSocket 的 HTTP 长连接，每当 A 类设备有上线，位置更新，离线等事件的时候，客户端发送文本消息，服务端识别并处理后，向所属 B 类设备发送实时消息，B 类设备客户端接收消息后，识别到 A 类设备的相应事件，完成对应的 A 类设备位置刷新以及其他业务操作。</p>
+<p>其涉及的 A 类设备，B 类设备及后台服务器交互时序图如下。</p>
+<p>A/B 类设备 WebSocket 交互图：<br> WebSocket详解（二）：技术原理、代码演示和应用案例_3.jpg </p>
+<p>A/B 类设备的 WebSocket 客户端封装在 websocket.js 的 JavaScript 代码中，与 jQuery MobileApp 一同打包为移动端 apk/ipa 安装包；WebSocket 服务端实现主要为 WebSocketDeviceServlet.java, WebSocketDeviceInbound.java，WebSocketDeviceInboundPool.java 几个类。下文我们一一介绍其具体代码实现。</p>
+<h2 id="socket-io"><a href="#socket-io" class="headerlink" title="socket.io"></a>socket.io</h2><h3 id="Socket-io-Client-respond-to-all-events-with-one-handler"><a href="#Socket-io-Client-respond-to-all-events-with-one-handler" class="headerlink" title="Socket.io Client: respond to all events with one handler?"></a><a href="https://stackoverflow.com/questions/10405070/socket-io-client-respond-to-all-events-with-one-handler" target="_blank" rel="noopener">Socket.io Client: respond to all events with one handler?</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">EventEmitter.prototype.on = function (name, fn) &#123;</span><br><span class="line">    if (!this.$events) &#123;</span><br><span class="line">      this.$events = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (!this.$events[name]) &#123;</span><br><span class="line">      this.$events[name] = fn;</span><br><span class="line">    &#125; else if (io.util.isArray(this.$events[name])) &#123;</span><br><span class="line">      this.$events[name].push(fn);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.$events[name] = [this.$events[name], fn];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return this;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Socket-IO-Client-Library-for-Net"><a href="#Socket-IO-Client-Library-for-Net" class="headerlink" title="Socket.IO Client Library for .Net"></a><a href="https://github.com/Quobject/SocketIoClientDotNet" target="_blank" rel="noopener">Socket.IO Client Library for .Net</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">using Quobject.SocketIoClientDotNet.Client;</span><br><span class="line"></span><br><span class="line">var socket = IO.Socket(&quot;http://localhost&quot;);</span><br><span class="line">socket.On(Socket.EVENT_CONNECT, () =&gt;</span><br><span class="line">&#123;</span><br><span class="line">	socket.Emit(&quot;hi&quot;);</span><br><span class="line">	</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">socket.On(&quot;hi&quot;, (data) =&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		Console.WriteLine(data);</span><br><span class="line">		socket.Disconnect();</span><br><span class="line">	&#125;);</span><br><span class="line">Console.ReadLine();</span><br></pre></td></tr></table></figure>
+<h2 id="netty"><a href="#netty" class="headerlink" title="netty"></a>netty</h2><p><a href="http://www.52im.net/thread-96-1-1.html" target="_blank" rel="noopener">选Netty还是Mina</a></p>
+<p>mina与netty都是Trustin Lee的作品，所以在很多方面都十分相似，他们线程模型也是基本一致，采用了Reactors in threads模型，即Main Reactor + Sub Reactors的模式。由main reactor处理连接相关的任务：accept、connect等，当连接处理完毕并建立一个socket连接（称之为session）后，给每个session分配一个sub reactor，之后该session的所有IO、业务逻辑处理均交给了该sub reactor。每个reactor均是一个线程，sub reactor中只靠内核调度，没有任何通信且互不打扰。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/22/20181022-import-export/" rel="next" title="default import/export和named import/export">
+                <i class="fa fa-chevron-left"></i> default import/export和named import/export
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/06/20181106/" rel="prev" title="20181106">
+                20181106 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">blacksmith</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#websocket"><span class="nav-number">1.</span> <span class="nav-text">websocket</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sockette"><span class="nav-number">1.1.</span> <span class="nav-text">sockette</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#websocket-handler"><span class="nav-number">1.2.</span> <span class="nav-text">websocket-handler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket：5分钟从入门到精通"><span class="nav-number">1.3.</span> <span class="nav-text">WebSocket：5分钟从入门到精通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebSocket详解（二）：技术原理、代码演示和应用案例"><span class="nav-number">1.4.</span> <span class="nav-text">WebSocket详解（二）：技术原理、代码演示和应用案例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WebSocket-案例分析"><span class="nav-number">1.4.1.</span> <span class="nav-text">WebSocket 案例分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-io"><span class="nav-number">2.</span> <span class="nav-text">socket.io</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-io-Client-respond-to-all-events-with-one-handler"><span class="nav-number">2.1.</span> <span class="nav-text">Socket.io Client: respond to all events with one handler?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket-IO-Client-Library-for-Net"><span class="nav-number">2.2.</span> <span class="nav-text">Socket.IO Client Library for .Net</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#netty"><span class="nav-number">3.</span> <span class="nav-text">netty</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">blacksmith</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

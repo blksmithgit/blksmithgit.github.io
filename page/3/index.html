@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/20180307-reactnative-windows/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/20180411-IoC-Container-Performance/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="blacksmith">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/07/20180307-reactnative-windows/" itemprop="url">windows下安装reactnative</a></h1>
+                <a class="post-title-link" href="/2018/04/11/20180411-IoC-Container-Performance/" itemprop="url">转一篇关于IOC性能测试的文章</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T11:27:24+08:00">
-                2018-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T08:13:38+08:00">
+                2018-04-11
               </time>
             
 
@@ -303,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具使用/" itemprop="url" rel="index">
-                    <span itemprop="name">工具使用</span>
+                  <a href="/categories/开发/" itemprop="url" rel="index">
+                    <span itemprop="name">开发</span>
                   </a>
                 </span>
 
@@ -342,82 +342,77 @@
       
         
           
-            <h2 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h2><ul>
-<li>Node </li>
-<li>the React Native command line interface</li>
-<li>Python2 </li>
-<li>a JDK </li>
-<li>Android Studio.</li>
-</ul>
-<h3 id="安装Chocolatey"><a href="#安装Chocolatey" class="headerlink" title="安装Chocolatey"></a>安装Chocolatey</h3><p>chocolatey是windows平台下的包管理工具，类似mac下的homebrew，node.js的npm</p>
-<p>安装：以管理员权限打开命令提示符窗口，然后输入一下命令并执行：</p>
-<pre><code>@&quot;%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe&quot; -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command &quot;iex ((New-Object System.Net.WebClient).DownloadString(&apos;https://chocolatey.org/install.ps1&apos;))&quot; &amp;&amp; SET &quot;PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin&quot;
-</code></pre><p> <code>`</code></p>
-<p>安装完成后，输入 </p>
-<pre><code>choco
-</code></pre><p>查看版本号</p>
-<h3 id="安装-Node-Python2-JDK"><a href="#安装-Node-Python2-JDK" class="headerlink" title="安装 Node, Python2, JDK"></a>安装 Node, Python2, JDK</h3><p>以管理员权限打开命令提示符窗口，然后输入以下命令并执行：<br>​<br>    choco install -y nodejs.install python2 jdk8</p>
-<h2 id="安装React-Native-CLI"><a href="#安装React-Native-CLI" class="headerlink" title="安装React Native CLI"></a>安装React Native CLI</h2><pre><code>npm install -g react-native-cli
-</code></pre><h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><pre><code>react-native init &lt;project name&gt;
-</code></pre><h2 id="安装-React-Native-Windows"><a href="#安装-React-Native-Windows" class="headerlink" title="安装 React Native Windows"></a>安装 React Native Windows</h2><h3 id="安装React-Native-Windows-CLI"><a href="#安装React-Native-Windows-CLI" class="headerlink" title="安装React Native Windows CLI"></a>安装React Native Windows CLI</h3><p>如果使用npm</p>
-<pre><code>npm install --save-dev rnpm-plugin-windows
-</code></pre><p>如果使用 Yarn,</p>
-<pre><code>yarn add rnpm-plugin-windows --dev
-</code></pre><h3 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h3><p>Initialize your React Native Windows project in the project directory by running:</p>
-<pre><code>react-native windows
-</code></pre><p>在这一步报错了：<br>    Could not find <a href="mailto:react-native-windows@0.54" target="_blank" rel="noopener">react-native-windows@0.54</a>.<em>. Latest version of react-native-windows is 0.52.0-rc.3, try switching to <a href="mailto:react-native@0.52" target="_blank" rel="noopener">react-native@0.52</a>.</em>.</p>
-<p>版本不兼容，用react-native 0.52.0 重新创建项目</p>
-<pre><code>react-native init --version=&quot;0.52.0&quot; MyProject
-</code></pre><p>然后进入项目目录，再来一遍<br>    npm install –save-dev rnpm-plugin-windows</p>
-<p>再次执行<br>    react-native windows</p>
-<p>这次成功了，显示如下：</p>
-<pre><code>react-native-windows@0.52.0-rc.3 successfully installed.
-Generating self-signed certificate...
-Self-signed certificate generated successfully.
-   create windows\.gitignore
-   create windows\testrn\ReactAssets\.gitignore
-   create App.windows.js
-   create windows\testrn\App.xaml
-   create windows\testrn\App.xaml.cs
-   create windows\testrn\MainReactNativeHost.cs
-   create windows\testrn\Package.appxmanifest
-   create windows\testrn\Properties\AssemblyInfo.cs
-   create windows\testrn\Properties\Default.rd.xml
-   create windows\testrn\ReactAssets\index.windows.bundle
-   create windows\testrn\testrn.csproj
-   create windows\testrn.sln
-   create windows\testrn\Assets\LockScreenLogo.scale-200.png
-   create windows\testrn\Assets\SplashScreen.scale-200.png
-   create windows\testrn\Assets\Square150x150Logo.scale-200.png
-   create windows\testrn\Assets\Square44x44Logo.scale-200.png
-   create windows\testrn\Assets\Square44x44Logo.targetsize-24_altform-unplated.png
-   create windows\testrn\Assets\StoreLogo.png
-   create windows\testrn\Assets\Wide310x150Logo.scale-200.png
-To run your app on UWP:
-    react-native run-windows
-</code></pre><p>执行react-native run-windows失败了，提示<br>    Build failed with message Error: Must have a minimum Windows SDK version 10.0.10586.0 installed. Check your build configuration.</p>
-<h3 id="安装运行需要的组件"><a href="#安装运行需要的组件" class="headerlink" title="安装运行需要的组件"></a>安装运行需要的组件</h3><p>Make sure you have installed all <a href="https://github.com/Microsoft/react-native-windows#system-requirements" target="_blank" rel="noopener">requirements</a> for React Native Windows. </p>
-<ul>
-<li><p>You can build and deploy React Native Windows apps on the Pro or Enterprise versions of Windows 7 SP1, Windows 8.1, or Windows 10</p>
-<ul>
-<li>You cannot run the emulators and some other developer tooling on the “Starter” or “Home” versions of these operating systems</li>
-<li>You can run React Native Windows UWP apps only on Windows 10 devices, but React Native Windows WPF apps will run on Windows 7-10 so long as .NET 4.6 is installed on the end user’s machine</li>
-</ul>
-</li>
-<li><p>Download</p>
-<p>Visual Studio 2017 Community or Greater</p>
-<p>. (Visual Studio 2015 support has been deprecated.)</p>
-<ul>
-<li>You will need to start Visual Studio after it is installed to do some final setup before it can be used to build or run your React Native Windows application</li>
-</ul>
-</li>
-<li><p><a href="https://developer.microsoft.com/en-us/windows/downloads/sdk-archive" target="_blank" rel="noopener">Windows 10 SDK Build 14393</a></p>
-</li>
-</ul>
-<p><em>Note</em>: Development on React Native Windows itself currently requires Visual Studio 2017. It is not supported with VS Code, but we will gladly accept pull requests to enable a great developer experience in those environments.</p>
-<h2 id="Running-a-React-Native-Windows-App"><a href="#Running-a-React-Native-Windows-App" class="headerlink" title="Running a React Native Windows App"></a>Running a React Native Windows App</h2><h3 id="With-Visual-Studio"><a href="#With-Visual-Studio" class="headerlink" title="With Visual Studio"></a>With Visual Studio</h3><h3 id="Without-Visual-Studio"><a href="#Without-Visual-Studio" class="headerlink" title="Without Visual Studio"></a>Without Visual Studio</h3><p>In your React Native Windows project directory, run:</p>
-<pre><code>react-native run-windows
-</code></pre><p>A new Command Prompt window will open with the React packager as well as a React Native Windows app. You can now start developing! 🎉<br>​<br>​    </p>
+            <h1 id="原文：IoC-Container-Performance"><a href="#原文：IoC-Container-Performance" class="headerlink" title="原文：IoC Container Performance"></a>原文：<a href="https://xamarinhelp.com/ioc-container-performance/" target="_blank" rel="noopener">IoC Container Performance</a></h1><p>Posted: <strong>October 15, 2017</strong><br>By: <strong>Adam Pedley</strong></p>
+<h2 id="Types"><a href="#Types" class="headerlink" title="Types"></a>Types</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface ISecond &#123; &#125;</span><br><span class="line">public class Second : ISecond &#123; &#125;</span><br><span class="line">public interface IExample &#123; &#125;</span><br><span class="line">public class Example : IExample</span><br><span class="line">&#123;</span><br><span class="line">    public Example(ISecond second) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Test-1"><a href="#Test-1" class="headerlink" title="Test 1"></a>Test 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stopwatch s = new Stopwatch();</span><br><span class="line">s.Start();</span><br><span class="line">Locator.CurrentMutable.RegisterLazySingleton(() =&gt; new Second(), typeof(ISecond));</span><br><span class="line">Locator.CurrentMutable.RegisterLazySingleton(() =&gt; new Example(Locator.Current.GetService&lt;ISecond&gt;()), typeof(IExample));</span><br><span class="line">s.Stop();</span><br></pre></td></tr></table></figure>
+<h3 id="Test-2"><a href="#Test-2" class="headerlink" title="Test 2"></a>Test 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stopwatch s = new Stopwatch();</span><br><span class="line">s.Start();</span><br><span class="line">Locator.Current.GetService&lt;ISecond&gt;();</span><br><span class="line">s.Stop();</span><br></pre></td></tr></table></figure>
+<h3 id="Test-3"><a href="#Test-3" class="headerlink" title="Test 3"></a>Test 3</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stopwatch s = new Stopwatch();</span><br><span class="line">s.Start();</span><br><span class="line">Locator.Current.GetService&lt;IExample&gt;();</span><br><span class="line">s.Stop();</span><br></pre></td></tr></table></figure>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Register Type</th>
+<th>Resolve</th>
+<th>Resolve with CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AutoFac (4.6.1)</td>
+<td>212ms</td>
+<td>284ms</td>
+<td>332ms</td>
+</tr>
+<tr>
+<td>Caliburn.Micro (3.2.0)</td>
+<td>20ms</td>
+<td>134ms</td>
+<td>140ms</td>
+</tr>
+<tr>
+<td>DryIoc (2.12.3)</td>
+<td>138ms</td>
+<td>276ms</td>
+<td>294ms</td>
+</tr>
+<tr>
+<td>FreshMVVM (2.2.0)</td>
+<td>18ms</td>
+<td>128ms</td>
+<td>131ms</td>
+</tr>
+<tr>
+<td>MVVMCross (5.3.0)</td>
+<td>5ms</td>
+<td>118ms</td>
+<td>123ms</td>
+</tr>
+<tr>
+<td>MVVMLight (5.3.0)</td>
+<td>16ms</td>
+<td>118ms</td>
+<td>128ms</td>
+</tr>
+<tr>
+<td>Splat (2.0.0)</td>
+<td>22ms</td>
+<td>105ms</td>
+<td>111ms</td>
+</tr>
+<tr>
+<td>Unity (5.0-rc1)</td>
+<td>76ms</td>
+<td>515ms</td>
+<td>593ms</td>
+</tr>
+<tr>
+<td>Xamarin.Forms (2.4.0)</td>
+<td>1ms</td>
+<td>99ms</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
 
           
         
@@ -466,7 +461,7 @@ To run your app on UWP:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/20180306-hexo/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/20180408-git-pull-error/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="blacksmith">
@@ -485,7 +480,7 @@ To run your app on UWP:
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/06/20180306-hexo/" itemprop="url">使用markdown写blog--（hexo+github）</a></h1>
+                <a class="post-title-link" href="/2018/04/08/20180408-git-pull-error/" itemprop="url">git pull error:"fatal unrelated_histories"</a></h1>
         
 
         <div class="post-meta">
@@ -497,8 +492,694 @@ To run your app on UWP:
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T22:30:50+08:00">
-                2018-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T22:45:05+08:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用 git init初始化,当在github上创建和库，将本地和远程关联时，先调用<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
+<p>出现异常 “fatal: unrelated_histories”</p>
+<p>这是git2.9版本后出现的，该版本只允许使用共同源头的两个库或分支合并</p>
+<p>所以要加上参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master --allow-unrelated-histories</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/20180408-git-add-new-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/08/20180408-git-add-new-project/" itemprop="url">git如何关联远程分支</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T15:48:29+08:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>使用git clone一般不会有问题，可是<br>用git init初始化，或者直接在vs studio中加入了源代码管理，这种情况下，如何同步到git中去</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>1、 先在github建库，假设名字为<a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:yourname/yourproject.git</p>
+<p>2、 在git bash中关联远程库并推送本地修改</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:yourname/yourproject.git</span><br><span class="line">git pull origin master --allow-unrelated-histories //先合并远程文件到本地</span><br><span class="line">git push -u origin master //本地更新推送到远程</span><br></pre></td></tr></table></figure>
+</code></pre><p>git 2.9后，不同祖先分支不能直接合并，需要加上<code>--allow-unrelated-histories</code>参数</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/20180406-mvvm-in-wpf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/07/20180406-mvvm-in-wpf/" itemprop="url">mvvm in wpf</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T20:29:14+08:00">
+                2018-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>observable property</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private string _firstName;</span><br><span class="line">public string FirstName</span><br><span class="line">&#123;</span><br><span class="line">  get</span><br><span class="line">  &#123;</span><br><span class="line">    return _firstName;</span><br><span class="line">  &#125;</span><br><span class="line">  set</span><br><span class="line">  &#123;</span><br><span class="line">    if (_firstName == value)</span><br><span class="line">    &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    _firstName = value;</span><br><span class="line">    var handler = PropertyChanged;</span><br><span class="line">    if (handler != null)</span><br><span class="line">    &#123;</span><br><span class="line">      handler(this, new PropertyChangedEventArgs(&quot;FirstName&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In order to solve this, MVVM Light proposes a few solutions:</p>
+<ul>
+<li>The logic needed to raise the PropertyChanged event can be stored in a ViewModelBase class that every ViewModel inherits from.</li>
+<li>Properties can be identified by a lambda expression instead of a string. This prevents typos or errors when the name of the property changes.</li>
+<li>The remaining lines can be automated using a code snippet in Visual Studio.</li>
+</ul>
+<h2 id="MVVM-in-WPF"><a href="#MVVM-in-WPF" class="headerlink" title="MVVM in WPF"></a>MVVM in WPF</h2><p><a href="https://www.codeproject.com/Articles/819294/WPF-MVVM-step-by-step-Basics-to-Advance-Level" target="_blank" rel="noopener">WPF MVVM step by step (Basics to Advance Level)</a></p>
+<p>对应的中文翻译</p>
+<p><a href="https://www.oschina.net/translate/wpf-mvvm-step-by-step-basics-to-advance-level?lang=chs&amp;page=2#" target="_blank" rel="noopener">https://www.oschina.net/translate/wpf-mvvm-step-by-step-basics-to-advance-level?lang=chs&amp;page=2#</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/20180403-wpf-framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/04/20180403-wpf-framework/" itemprop="url">mvvm framework in wpf</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T15:45:21+08:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WPF应用的框架选型"><a href="#WPF应用的框架选型" class="headerlink" title="WPF应用的框架选型"></a>WPF应用的框架选型</h1><h2 id="选择标准"><a href="#选择标准" class="headerlink" title="选择标准"></a>选择标准</h2><ul>
+<li>性能好，界面响应迅速，无阻塞</li>
+<li>当有异常发生时，容易定位和跟踪调试</li>
+<li>框架的更新频率，是否仍在维护</li>
+<li>被接受的程度</li>
+<li>除了wpf外，其它领域的适用情况</li>
+</ul>
+<h2 id="特性要求"><a href="#特性要求" class="headerlink" title="特性要求"></a>特性要求</h2><ul>
+<li>Typical MVVM Framework</li>
+<li>BaseViewModel </li>
+<li>ICommand implementations </li>
+<li>Behaviors </li>
+<li>ValueConverters </li>
+<li>EventAggregator </li>
+<li>IoC (ViewModelLocator) </li>
+<li>Templates, snippets </li>
+<li>“Donate” button</li>
+</ul>
+<p>其他</p>
+<ul>
+<li>NavigationService</li>
+<li>模块装载</li>
+<li>Region</li>
+<li>ViewModel测试</li>
+</ul>
+<h2 id="当前可选择框架"><a href="#当前可选择框架" class="headerlink" title="当前可选择框架"></a>当前可选择框架</h2><ul>
+<li>PRISM</li>
+<li>Caliburn.micro</li>
+<li>MVVM Light</li>
+<li>Reactive UI</li>
+<li>Stylet</li>
+<li>MVVMCross</li>
+<li><a href="https://github.com/rid00z/FreshMvvm" target="_blank" rel="noopener">FreshMvvm</a></li>
+</ul>
+<p><img src="../images/mvvm_framework.png" alt=""></p>
+<p><img src="https://mobileprogrammerblog.files.wordpress.com/2017/01/mvvm2_2.png?w=1140" alt="mvvm2_2"></p>
+<hr>
+<h4 id="MVVM-Messenger-and-View-Services-in-MVVM"><a href="#MVVM-Messenger-and-View-Services-in-MVVM" class="headerlink" title="MVVM - Messenger and View Services in MVVM"></a><a href="https://msdn.microsoft.com/en-us/magazine/jj694937.aspx" target="_blank" rel="noopener">MVVM - Messenger and View Services in MVVM</a></h4><hr>
+<h3 id="Prism"><a href="#Prism" class="headerlink" title=" Prism"></a><a href="https://github.com/PrismLibrary/Prism" target="_blank" rel="noopener"> Prism</a></h3><p>Prism is a framework for building loosely coupled, maintainable, and testable XAML applications in WPF, Windows 10 UWP, and Xamarin Forms. </p>
+<p><a href="https://github.com/PrismLibrary/Prism-Samples-Wpf" target="_blank" rel="noopener">Prism的WPF例子</a></p>
+<hr>
+<h3 id="MVVM-Light"><a href="#MVVM-Light" class="headerlink" title="MVVM Light"></a><a href="http://www.mvvmlight.net/" target="_blank" rel="noopener">MVVM Light</a></h3><p>The main purpose of the toolkit is to accelerate the creation and development of MVVM applications in Xamarin.Android, Xamarin.iOS, Xamarin.Forms, Windows 10 UWP, Windows Presentation Foundation (WPF), Silverlight, Windows Phone.</p>
+<h4 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h4><h5 id="MVVM-Light-Toolkit-Example"><a href="#MVVM-Light-Toolkit-Example" class="headerlink" title="MVVM Light Toolkit Example"></a><a href="http://dotnetpattern.com/mvvm-light-toolkit-example" target="_blank" rel="noopener">MVVM Light Toolkit Example</a></h5><h5 id="Xamarin-Forms-with-MVVM-Light"><a href="#Xamarin-Forms-with-MVVM-Light" class="headerlink" title="Xamarin Forms with MVVM Light"></a><a href="https://mobileprogrammerblog.wordpress.com/2017/01/21/xamarin-forms-with-mvvm-light/" target="_blank" rel="noopener">Xamarin Forms with MVVM Light</a></h5><h5 id="FriendEditor"><a href="#FriendEditor" class="headerlink" title="FriendEditor"></a><a href="https://github.com/imnbwd/FriendEditor.git" target="_blank" rel="noopener">FriendEditor</a></h5><p>编译后会出现以下错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cannot resolve dependency to assembly &apos;Microsoft.Windows.Design.Extensibility &apos;, version=4.0.0.0.0, culture=neutral,... because it has not been preloaded&quot;</span><br></pre></td></tr></table></figure>
+<p>解决方案：</p>
+<p>This issue will be caused by the XAML compiler, it tries to load assemblies referenced by this dependency(Microsoft.Windows.Design.Extensibility) and fails if not successful.</p>
+<p>To avoid the build error we need to add this reference to our project as well, please follow these steps:</p>
+<p><strong>Right-Click your project -&gt; Add Reference… -&gt; Assemblies -&gt; Search Assemblies: “Extensibility” -&gt; Select “‘Microsoft.Windows.Design.Extensibility” -&gt; OK</strong></p>
+<p><img src="http://social.msdn.microsoft.com/Forums/getfile/433160" alt=""></p>
+<p>此处我选择的是 version 4.3.1.0</p>
+<hr>
+<h3 id="Caliburn-Micro"><a href="#Caliburn-Micro" class="headerlink" title="Caliburn.Micro"></a><a href="https://caliburnmicro.com/" target="_blank" rel="noopener">Caliburn.Micro</a></h3><p>A small, yet powerful framework, designed for building applications across all XAML platforms. Its strong support for MV* patterns will enable you to build your solution quickly, without the need to sacrifice code quality or testability.</p>
+<hr>
+<h3 id="ReactiveUI"><a href="#ReactiveUI" class="headerlink" title="ReactiveUI"></a><a href="https://github.com/reactiveui/ReactiveUI" target="_blank" rel="noopener">ReactiveUI</a></h3><p>ReactiveUI is a composable, cross-platform model-view-viewmodel framework for all .NET platforms that is inspired by functional reactive programming which is a paradigm that allows you to abstract mutable state away from your user interfaces and express the idea around a feature in one readable place and improve the testability of your application.</p>
+<p>#####Dynamic Trader Samples</p>
+<p>Dynamic data is a portable class library which brings the power of reactive (rx) to collections. It is open source and the code base lives here <a href="https://github.com/RolandPheasant/DynamicData" target="_blank" rel="noopener">Dynamic Data on GitHub</a>.</p>
+<h4 id="Reactive-Extensions入门"><a href="#Reactive-Extensions入门" class="headerlink" title="Reactive Extensions入门"></a><a href="http://www.cnblogs.com/yangecnu/archive/2012/11/03/Introducting_ReactiveExtensions.html" target="_blank" rel="noopener">Reactive Extensions入门</a></h4><h5 id="一些资源"><a href="#一些资源" class="headerlink" title="一些资源"></a>一些资源</h5><p> 为了帮助大家更好的了解Reactive Extension，我翻译了一篇在Channel9 上的演讲，<a href="http://channel9.msdn.com/Blogs/codefest/DC2010T0100-Keynote-Rx-curing-your-asynchronous-programming-blues" target="_blank" rel="noopener">DevCamp 2010 Keynote - Rx: Curing your asynchronous programming blues</a>，个人觉得讲得非常好，对IObservable接口如何有IEnumerable演变，以及Rx如何帮助我们简化异步编程都有很详细的讲解。如果您感兴趣的话，可以直接在Channel9上看。当然，我花了很长时间听译并试着翻译了整个视频，有些地方听的不是很懂，不过应该不影响您理解，并制作了<a href="http://files.cnblogs.com/yangecnu/Rx-curing-your-asynchronous-programming-blues.rar" target="_blank" rel="noopener">中英文的字幕</a>，您可以到<a href="http://channel9.msdn.com/Blogs/codefest/DC2010T0100-Keynote-Rx-curing-your-asynchronous-programming-blues" target="_blank" rel="noopener">Channel9</a>上下载高清视频，然后结合中英文字幕看，我也将该高清视频和字幕压制到一起并上传到youku上了，可能不会很清晰，还是强烈建议您Channel9下载下来看。</p>
+<p> 当然，除了这个非常好的介绍Rx的演讲之外，下面的一些英文资料也很有参考价值：</p>
+<ol>
+<li>Rx team blog <a href="http://blogs.msdn.com/b/rxteam/" target="_blank" rel="noopener">http://blogs.msdn.com/b/rxteam/</a></li>
+<li>DevLab <a href="http://msdn.microsoft.com/en-us/data/gg577609" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/data/gg577609</a></li>
+<li>Channel 9 <a href="http://channel9.msdn.com/Tags/Rx" target="_blank" rel="noopener">http://channel9.msdn.com/Tags/Rx</a></li>
+</ol>
+<p>如果您不喜欢看英文的话，下面的一些也很有参考价值:</p>
+<p>1. CSDN上一位网友翻译的几篇<a href="http://www.atmarkit.co.jp/fdotnet/introrx/index/index.html" target="_blank" rel="noopener">日语文章介绍Rx</a>的，个人觉得很好：</p>
+<ol>
+<li><a href="http://blog.csdn.net/fangxinggood/article/details/7381619" target="_blank" rel="noopener">Reactive Extensions (Rx) 入门(1) —— Reactive Extensions 概要</a></li>
+<li><a href="http://blog.csdn.net/fangxinggood/article/details/7581937" target="_blank" rel="noopener">Reactive Extensions (Rx) 入门(2) —— 安装 Reactive Extensions</a></li>
+<li><a href="http://blog.csdn.net/fangxinggood/article/details/7628322" target="_blank" rel="noopener">Reactive Extensions (Rx) 入门(3) —— Rx的事件编程①</a></li>
+<li><a href="http://blog.csdn.net/fangxinggood/article/details/7685393" target="_blank" rel="noopener">Reactive Extensions (Rx) 入门(4) —— Rx的事件编程②</a></li>
+<li><a href="http://blog.csdn.net/fangxinggood/article/details/7749907" target="_blank" rel="noopener">Reactive Extensions (Rx) 入门(5) —— Rx的事件编程③</a></li>
+</ol>
+<p>2. 上面这些都很好，当然我之前也写了几篇介绍Rx，您要是觉得有时间的话，也不防瞧一瞧：</p>
+<ol>
+<li><a href="http://www.cnblogs.com/yangecnu/archive/2012/04/17/Introducting_LINQ_And_ReactiveExtensions.html" target="_blank" rel="noopener">Reactive Extensions入门(1)：LINQ和Rx简单介绍</a></li>
+<li><a href="http://www.cnblogs.com/yangecnu/archive/2012/05/18/Introducting_LINQ_And_ReactiveExtensions_Core_LINQ.html" target="_blank" rel="noopener">Reactive Extensions入门(2)：LINQ操作符</a></li>
+<li><a href="http://www.cnblogs.com/yangecnu/archive/2012/05/25/Introducting_LINQ_And_ReactiveExtensions_Core_Rx.html" target="_blank" rel="noopener">Reactive Extensions入门(3)：Rx操作符</a></li>
+<li><a href="http://www.cnblogs.com/yangecnu/archive/2012/06/27/Introducting_LINQ_And_ReactiveExtensions_Practical_Rx.html" target="_blank" rel="noopener">Reactive Extensions入门(4)：Rx实战</a></li>
+<li><a href="http://www.cnblogs.com/yangecnu/archive/2012/07/05/Introducting_LINQ_And_ReactiveExtensions_ReactiveUI.html" target="_blank" rel="noopener">Reactive Extensions入门(5)：ReactiveUI MVVM框架</a></li>
+<li><a href="http://www.cnblogs.com/yangecnu/archive/2012/07/10/Introducting_LINQ_And_ReactiveExtensions_UnitTest.html" target="_blank" rel="noopener">Reactive Extensions入门(6)：使用Rx进行单元测试</a></li>
+</ol>
+<p>最后，希望这些能够给您了解Reactive Extension及对异步编程新方式带来一定的帮助。</p>
+<h3 id="英文资料"><a href="#英文资料" class="headerlink" title="英文资料"></a>英文资料</h3><ol>
+<li><a href="http://www.introtorx.com/Content/v1.0.10621.0/01_WhyRx.html" target="_blank" rel="noopener">Introduction to Rx</a></li>
+<li><a href="https://docs.reactiveui.net/en/getting-started/index.html" target="_blank" rel="noopener">RectiveUI Documentations</a></li>
+</ol>
+<hr>
+<h3 id="MVVMCross"><a href="#MVVMCross" class="headerlink" title="MVVMCross"></a><a href="https://github.com/MvvmCross/MvvmCross" target="_blank" rel="noopener">MVVMCross</a></h3><p>MvvmCross is a cross-platform MVVM framework. It enables developers to create apps using the MVVM pattern on <em>Xamarin.iOS, Xamarin.Android, Xamarin.Mac, Xamarin.Forms, Universal Windows Platform (UWP) and Windows Presentation Framework (WPF)</em>. This allows for better code sharing by allowing you to share behavior and business logic between platforms.</p>
+<p>Among the features MvvmCross provides are:</p>
+<ul>
+<li>ViewModel to View bindings using own customizable binding engine, which allows you to create own binding definitions for own custom views</li>
+<li>ViewModel to ViewModel navigation, helps you share behavior on how and when to navigate</li>
+<li>Inversion of Control through Dependency Injection and Property Injection</li>
+<li>Plugin framework, which lets you plug-in cool stuff like GPS Location, Localization, Sensors, Binding Extensions and a huge selection of 3rd party community plug-ins</li>
+</ul>
+<p>MvvmCross is extendable by you. We strive to let as much code be configurable and overridable, to let the developer decide how they want to use the framework. However, the framework is very usable without doing anything.</p>
+<hr>
+<h3 id="FreshMvvm-for-Xamarin-Forms"><a href="#FreshMvvm-for-Xamarin-Forms" class="headerlink" title="FreshMvvm for Xamarin.Forms"></a><a href="https://github.com/rid00z/FreshMvvm" target="_blank" rel="noopener">FreshMvvm for Xamarin.Forms</a></h3><p>FreshMvvm is a super light Mvvm Framework designed specifically for Xamarin.Forms. It’s designed to be Easy, Simple and Flexible.</p>
+<h3 id="How-does-it-compare-to-other-options"><a href="#How-does-it-compare-to-other-options" class="headerlink" title="How does it compare to other options?"></a><a href="https://github.com/rid00z/FreshMvvm#how-does-it-compare-to-other-options" target="_blank" rel="noopener"></a>How does it compare to other options?</h3><ul>
+<li>It’s super light and super simple</li>
+<li>It’s specifically designed for Xamarin.Forms</li>
+<li>Designed to be easy to learn and develop (great when you are not ready for RxUI)</li>
+<li>Uses a Convention over Configuration</li>
+</ul>
+<h3 id="Features"><a href="#Features" class="headerlink" title="Features"></a><a href="https://github.com/rid00z/FreshMvvm#features" target="_blank" rel="noopener"></a>Features</h3><ul>
+<li>PageModel to PageModel Navigation</li>
+<li>Automatic wiring of BindingContext</li>
+<li>Automatic wiring of Page events (eg. appearing)</li>
+<li>Basic methods (with values) on PageModel (init, reverseinit)</li>
+<li>Built in IOC Container</li>
+<li>PageModel Constructor Injection</li>
+<li>Basic methods available in Model, like Alert</li>
+<li>Built in Navigation types for SimpleNavigation, Tabbed and MasterDetail</li>
+</ul>
+<hr>
+<h3 id="Stylet"><a href="#Stylet" class="headerlink" title="Stylet"></a><a href="http://www.cnblogs.com/waku/p/6879809.html" target="_blank" rel="noopener">Stylet</a></h3><p><a href="https://github.com/canton7/Stylet" target="_blank" rel="noopener">Stylet</a>是我最近发现的一个WPF MVVM框架, 在博客园上搜了一下, 相关的文章基本没有, 所以写了这个入门的文章推荐给大家.</p>
+<p>Stylet是受<a href="https://github.com/Caliburn-Micro/Caliburn.Micro" target="_blank" rel="noopener">Caliburn Micro</a>项目的启发, 所以借鉴了其中的很多概念, 同时精简了一些部分, 如只支持MVVM, WPF和.NET 4.5(Silverlight和Xamarin不受支持), 所以Style本身很小巧, DLL才140KB左右.</p>
+<p>虽然身材小,但相比知名的MVVM框架, 如MVVM Light等功能却一点都不差,加上很完善的文档,高覆盖率的单元测试,我认为它是一个很有潜力的MVVM框架.</p>
+<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Stylet is a small but powerful ViewModel-first MVVM framework for WPF, which allows you to write maintainable and extensible code in a way which is easy to test. Stylet’s aims to:</p>
+<ul>
+<li>Solve the blockers, niggles, and annoyances which hamper MVVM development without a framework, using simple but powerful concepts.</li>
+<li>Be obvious to people picking up your project for the first time: there’s very little magic</li>
+<li>Be easy to verify/validate. The LOC count is low, and it comes with a very comprehensive test suite. The code is well-written and well-documented.</li>
+<li>Be flexible while providing sensible defaults. Almost any part of the framework can be overridden if you wish, but you probably won’t want to.</li>
+</ul>
+<p>It is inspired by <a href="http://caliburnmicro.com/" target="_blank" rel="noopener">Caliburn.Micro</a>, and shares many of its concepts, but removes most of the magic (replacing it with more powerful alternatives), and simplifies parts considerably by targeting only MVVM, WPF and .NET 4.5.</p>
+<hr>
+<h2 id="一些讨论"><a href="#一些讨论" class="headerlink" title="一些讨论"></a>一些讨论</h2><h3 id="MVVM-Frameworks-For-NET"><a href="#MVVM-Frameworks-For-NET" class="headerlink" title="MVVM Frameworks For .NET"></a><a href="https://www.infoq.com/news/2011/12/mvvm-frameworks-net" target="_blank" rel="noopener">MVVM Frameworks For .NET</a></h3><ul>
+<li><a href="http://compositewpf.codeplex.com/" target="_blank" rel="noopener">PRISM</a> – provided by Microsoft. Works with MEF/Unity for dependency injection, has composite commands and is <a href="http://msdn.microsoft.com/en-us/library/gg430866(v=PandP.40" target="_blank" rel="noopener">extensible</a>.aspx). Detailed tutorials and walkthroughs at <a href="http://msdn.microsoft.com/en-us/library/gg406140.aspx" target="_blank" rel="noopener">MSDN</a>. </li>
+<li><a href="http://mvvmlight.codeplex.com/" target="_blank" rel="noopener">MVVM Light Toolkit</a> – has Project and Item templates for Visual Studio and Expression Blend. Read more <a href="http://www.galasoft.ch/mvvm/" target="_blank" rel="noopener">here</a> and refer tutorials on working with <a href="http://www.galasoft.ch/mvvm/creating/" target="_blank" rel="noopener">VS</a> and <a href="http://www.galasoft.ch/mvvm/creatingblend/" target="_blank" rel="noopener">Expression Blend</a>.</li>
+<li><a href="http://caliburnmicro.codeplex.com/" target="_blank" rel="noopener">Caliburn Micro</a> – supports ViewModel-First and View-First development, Asynchronous programming through co-routines.</li>
+<li><a href="http://simplemvvmtoolkit.codeplex.com/" target="_blank" rel="noopener">Simple MVVM Toolkit</a> – provides VS Project and Item Templates, Dependency Injection, support for Deep cloning and Property Association between Model and ViewModel</li>
+<li><a href="http://catel.codeplex.com/" target="_blank" rel="noopener">Catel</a> – includes Project and Item templates, user controls and enterprise library classes. Supports Dynamic View Model injection, lazy loading of view models and validations. Also sports WP7 specific view model services </li>
+</ul>
+<h3 id="MVVM-Light-Unity-or-Prism"><a href="#MVVM-Light-Unity-or-Prism" class="headerlink" title="MVVM Light + Unity or Prism?"></a><a href="https://stackoverflow.com/questions/4750255/mvvm-light-unity-or-prism" target="_blank" rel="noopener">MVVM Light + Unity or Prism?</a></h3><p>If you need modularity, you’d want to look at Prism. Prism has <em>some</em> elements that can help you with MVVM (DelegateCommand and CompositeCommand, for example), but I think it’s more complete with another MVVM framework.</p>
+<p>There was a question a few days ago about how to model Prism. Check that out for a detailed explanation of how to consider Prism’s functionality. <a href="https://stackoverflow.com/questions/4678198/high-level-modelling-advice-for-prism-mvvm/4736923#4736923" target="_blank" rel="noopener">High Level Modelling Advice for Prism MVVM</a></p>
+<p>Unity is an implementation of an inversion of control container and it’s definitely good, but Prism has the ability to use other containers. It has builtin support for MEF (which, in turn, is builtin to .NET 4.0), but it’s not your only choice. Look at some of the samples included in Prism and decide what approach you like better. Unity is not complete on its own for UI compositing in my opinion. MEF might be a closer choice if you wanted to try to composite a UI with the MVVM Framework + IoC Framework approach.</p>
+<p>MVVM Light is actually a complimentary framework to Prism. Other MVVM frameworks to consider:</p>
+<ul>
+<li>MVVM Foundation (very lightweight… good for small projects)</li>
+<li>Caliburn (very robust framework)</li>
+<li>Caliburn Micro (shares a name and an author from Caliburn, but it’s akin to MVVM Light with some nice conventions)</li>
+<li><a href="http://blog.paulbetts.org/index.php/2011/01/15/reactivexaml-is-now-reactiveui-2-0/" target="_blank" rel="noopener">ReactiveUI</a> (Formerly “ReactiveXAML”. This is a bit of a brain melter, but if you learn Reactive Extensions for .NET (Rx), this framework is simply amazing… magical in my opinion.)</li>
+</ul>
+<p>If I were going to start a new project: I would go with Prism and ReactiveUI.</p>
+<p>Prism because you have to have modularity with large projects and I like the ability to remove and add large units of functionality to an app just by deleting or adding DLLs (and you don’t have to implement the DLL sniffing feature like you would with just an IoC + MVVM approach). Easier to test, easier to debug, easier to develop separately. Nice all around.</p>
+<p>ReactiveUI because with UI programming these days, most of your time is spent managing your time on the UI thread. Blocking is a no-no… users don’t want to see a UI freeze; they want to see that animated GIF wait symbol spinning so they know they can work on something else while your data is loading. In addition, so much of the value applications provide these days is taking data from disparate systems and putting them together in the UI… not only will you need a good compositing system (Prism), but you will also need a good MVVM framework that treats asynchronous operations as its bread and butter… ReactiveUI is it.    </p>
+<h3 id="MVVM-Unity-Prism-MEF-Caliburn-What-should-I-use"><a href="#MVVM-Unity-Prism-MEF-Caliburn-What-should-I-use" class="headerlink" title="MVVM, Unity, Prism, MEF, Caliburn - What should I use?"></a><a href="https://stackoverflow.com/questions/10799101/mvvm-unity-prism-mef-caliburn-what-should-i-use" target="_blank" rel="noopener">MVVM, Unity, Prism, MEF, Caliburn - What should I use?</a></h3><p>I would recommend <a href="http://caliburnmicro.codeplex.com/" target="_blank" rel="noopener">Caliburn.Micro</a>, as it is straightforward to implement following the examples on the Caliburn.Micro documentation page. It also has a very compelling convention over configuration mechanism, and uses an <a href="http://caliburnmicro.codeplex.com/wikipage?title=All%20About%20Actions" target="_blank" rel="noopener">Actions</a> system to invoking verbs (methods) on your view models from the view. This is more powerful than any other mechanism I’ve seen.</p>
+<p>Prism is quite a heavyweight framework which includes elements of MVVM design to help the implementation, as well as being particularly tailored towards building composite applications (applications that are built up of decoupled components within a hosting shell).</p>
+<h3 id="7-Things-You-Need-to-Know-Before-Starting-a-Prism-WPF-Project"><a href="#7-Things-You-Need-to-Know-Before-Starting-a-Prism-WPF-Project" class="headerlink" title="7 Things You Need to Know Before Starting a Prism WPF Project"></a><a href="https://www.intertech.com/Blog/7-things-you-need-to-know-before-starting-a-prism-wpf-project/" target="_blank" rel="noopener">7 Things You Need to Know Before Starting a Prism WPF Project</a></h3><ul>
+<li>Bootstrapper – this provides application initialization</li>
+<li>Shell and Shell Presenter – these provide the general visual layout structure and behavior for an application</li>
+<li>Regions – these provide placeholders for visual content and enable composite views</li>
+<li>Modules – these plug-ins enforce vertical or horizontal slices (or both) in an application, and enforce adherence to your chosen Presentation Model pattern</li>
+<li>Views – these provide the content to display on the screen</li>
+<li>Synchronous Communication – via commands</li>
+<li>Asynchronous Communication – via event aggregation or services</li>
+<li>Services – these provide either module-specific or shared-use functionality</li>
+<li>Multi-targeting – this provides ability to use the same code base to deploy as either a WPF or Silverlight application</li>
+</ul>
+<h3 id="prism-vs-mvvm-light-for-wpf"><a href="#prism-vs-mvvm-light-for-wpf" class="headerlink" title="prism vs mvvm light for wpf"></a><a href="https://stackoverflow.com/questions/20487243/prism-vs-mvvm-light-for-wpf" target="_blank" rel="noopener">prism vs mvvm light for wpf</a></h3><ol>
+<li><p>I just moved a project from Prism to MvvmLight and it seems to work faster (very subjective).</p>
+</li>
+<li><p>Both Prism and MvvmLight have Mediator realisation (IEventAggregator in Prism, IMessenger in MvvmLight). But IMessenger has more abilities (for instance, sending messages with tokens) compared to IEventAggregator and is much more convenient to use (see next item).</p>
+<p>MvvmLight also has a more powerful ViewModelBase class.</p>
+</li>
+<li><p>Applications that use MvvmLight are much easier to test than those that use Prism. For instance, IMessenger is easier to mock than IEventAggregator.</p>
+</li>
+</ol>
+<p>I think that any new project should be based on modern solutions and approaches. IMHO, any modern MVVM-framework (like Catel, Caliburn.Micro, MvvmLight, ReactiveUI) is much better than Prism.</p>
+<h3 id="Mvvm-no-framework-FreshMVVM-or-Prism"><a href="#Mvvm-no-framework-FreshMVVM-or-Prism" class="headerlink" title="Mvvm (no framework), FreshMVVM or Prism"></a><a href="https://forums.xamarin.com/discussion/88222/mvvm-no-framework-freshmvvm-or-prism" target="_blank" rel="noopener">Mvvm (no framework), FreshMVVM or Prism</a></h3><h3 id="How-to-choose-NOT-to-use-a-framework-Caliburn-Micro-etc-in-a-given-MVVM-application"><a href="#How-to-choose-NOT-to-use-a-framework-Caliburn-Micro-etc-in-a-given-MVVM-application" class="headerlink" title="How to choose NOT to use a framework (Caliburn.Micro, etc.) in a given MVVM application?"></a><a href="https://softwareengineering.stackexchange.com/questions/287322/how-to-choose-not-to-use-a-framework-caliburn-micro-etc-in-a-given-mvvm-appl" target="_blank" rel="noopener">How to choose NOT to use a framework (Caliburn.Micro, etc.) in a given MVVM application?</a></h3><p>I have tried CaliburnMicro and MVVMLight and when using Caliburn I really feel what you feel, sure it feel really magical able to bind control to property just by using Name=”PropertyName” instead of old Text=”{Bind PropertyName}” but in the end Caliburn goes way overboard to do this magical thing, when something goes wrong it really hard to debug, to make thing worse they have a lot of way to do one thing.</p>
+<h3 id="why-mvvmcross"><a href="#why-mvvmcross" class="headerlink" title="why mvvmcross?"></a><a href="https://forums.xamarin.com/discussion/58916/why-mvvmcross" target="_blank" rel="noopener">why mvvmcross?</a></h3><p> Prism &amp; Unity.</p>
+<p>Some great features are:</p>
+<ul>
+<li>Great navigation scheme making it really easy to pass objects as navigation contexts etc between pages</li>
+<li>Modularity, when an app gets big you can really benefit from separating out the app in modules (Finance, Procurement etc), helps for security too.<br>*other nice features like IDestructible &amp; IActiveAware for tabs etc</li>
+<li>Auto wire view &amp; viewmodel</li>
+<li>Register pages for navigation based on Idiom</li>
+<li>Great slack channel with lots of people to help</li>
+<li>Actively supported on Github</li>
+<li>It’s used quite a lot by some people in Xamarin and recommend by Miquel (Evolve 2016)</li>
+<li>Lastly, Brian is really helpful considering how busy he is and will get back if you email him</li>
+</ul>
+<hr>
+<h2 id="例程"><a href="#例程" class="headerlink" title="例程"></a>例程</h2><ul>
+<li><a href="https://www.codeproject.com/Articles/165368/WPF-MVVM-Quick-Start-Tutorial" target="_blank" rel="noopener">https://www.codeproject.com/Articles/165368/WPF-MVVM-Quick-Start-Tutorial</a></li>
+<li><a href="http://www.codeproject.com/Articles/321806/MVVMLight-Hello-World-in-10-Minutes" target="_blank" rel="noopener">Hello World in MVVM Light in 10 Minutes</a></li>
+<li><a href="http://www.codeproject.com/Articles/323187/MVVMLight-Using-Two-Views" target="_blank" rel="noopener">MVVMLight Using Two Views</a></li>
+</ul>
+<p><a href="https://bitbucket.org/EoghanRua/blog-work/src/4d66eb8a74f4b4215c4799b8ec99a77ee018101f/C%23/ScrollingAnimationsMVVMLight/?at=master" target="_blank" rel="noopener">https://bitbucket.org/EoghanRua/blog-work/src/4d66eb8a74f4b4215c4799b8ec99a77ee018101f/C%23/ScrollingAnimationsMVVMLight/?at=master</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/20180330-install-git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/30/20180330-install-git/" itemprop="url">git的安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T10:56:31+08:00">
+                2018-03-30
               </time>
             
 
@@ -559,7 +1240,614 @@ To run your app on UWP:
       
         
           
-            <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="http://blog.csdn.net/Hoshea_chx/article/details/78826689" target="_blank" rel="noopener">用Hexo + github搭建自己的博客 — 再也不用羡慕别人了！</a></p>
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/29/20180329-hexo-backup-sync/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/29/20180329-hexo-backup-sync/" itemprop="url">hexo的安装、使用、文章备份及同步</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T10:46:45+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="hexo的安装"><a href="#hexo的安装" class="headerlink" title="hexo的安装"></a>hexo的安装</h2><p>hexo 需要以下环境</p>
+<ul>
+<li>node.js</li>
+<li>git</li>
+</ul>
+<h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官方下载安装</a></p>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p><a href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="noopener">安装git</a></p>
+<h4 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h4><p>git每次提交时的内容除了文件，还包括提交者的名字和email等信息，这个信息是需要配置的</p>
+<p>全局配置：计算机该用户的所有git库缺省配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;XXX&quot;</span><br><span class="line">git config --global user.email &quot;XXX@XXX.com&quot;</span><br></pre></td></tr></table></figure>
+<p>单项目配置：有时候需要用别的用户名</p>
+<p>直接在项目目录下做配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name &quot;XXX&quot;</span><br><span class="line">git config user.email &quot;XXX@XXX.com&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="配置ssh连接"><a href="#配置ssh连接" class="headerlink" title="配置ssh连接"></a>配置ssh连接</h4><h5 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h5><p>以下命令都是在Git Bash中执行的</p>
+<ul>
+<li><p>生成密钥对（SSH key）</p>
+<p>  <code>ssh-keygen -t rsa -b 4096 -C &quot;xxx@xxx.com&quot;</code></p>
+<p>  其中，<a href="mailto:xxx@xxx.com" target="_blank" rel="noopener">xxx@xxx.com</a> 是邮箱，就是一个标识信息，它会写到公钥的最后面</p>
+</li>
+<li><p>将 SSH key 添加到 ssh-agent</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval &quot;$(ssh-agent -s)&quot;   //启动ssh-agent</span><br><span class="line">ssh-add ~/.ssh/id_rsa    //将这个SSHkey添加到ssh-agent里去</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>将 SSH key 添加到 Github 账户</p>
+<p> 打开 ~/.ssh/id_rsa.pub文件,拷贝全部内容，或者输入命令拷贝到剪贴板</p>
+<p> <code>clip &lt; ~/.ssh/id_rsa.pub</code></p>
+<p> 然后登录git账号，将SSH Key加入你的SSH key中</p>
+</li>
+<li><p>测试 SSH 连接</p>
+<p>  <code>ssh -T git@github.com</code></p>
+</li>
+</ul>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<h3 id="安装hexo主题"><a href="#安装hexo主题" class="headerlink" title="安装hexo主题"></a>安装hexo主题</h3><h2 id="hexo的使用"><a href="#hexo的使用" class="headerlink" title="hexo的使用"></a>hexo的使用</h2><h2 id="hexo的备份"><a href="#hexo的备份" class="headerlink" title="hexo的备份"></a>hexo的备份</h2><p>一般人都还是想把自己的markdown文件备份，这就得新建一个Repository，这个库既可以在github上，也可以在别的站点。</p>
+<p>已经有很多这样的文章描述这个备份过程，我觉得最方便的还是用hexi-git-backup这个插件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-git-backup --save</span><br></pre></td></tr></table></figure>
+<p>然后打开_config.yml文件，加入一下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">backup:</span><br><span class="line">  type: git</span><br><span class="line">  theme: next  // 如果需要备份主题的话，在这里配置</span><br><span class="line">  repository:</span><br><span class="line">    origin: git@gitee.com:xxx/xxxxx.git,master   // 你的备份库和分支</span><br></pre></td></tr></table></figure>
+<p>每次发布完后，运行</p>
+<p><code>hexo backup</code> 或者 <code>hexo b</code></p>
+<p>就可以完成备份</p>
+<h2 id="在多台电脑之间实现hexo的同步"><a href="#在多台电脑之间实现hexo的同步" class="headerlink" title="在多台电脑之间实现hexo的同步"></a>在多台电脑之间实现hexo的同步</h2><p>在新电脑配置好node.js 和git环境以后</p>
+<p>用git clone把你的库clone下来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone git@xxxx.com:xxx/myblog.git</span><br><span class="line">cd myblog</span><br><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p>然后输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g &amp;&amp; hexo s --open</span><br></pre></td></tr></table></figure>
+<p>看看是不是本地已经生成了最新的blog</p>
+<p>在每台电脑写作之前，先运行</p>
+<p><code>git pull</code></p>
+<p>获取最新内容，然后编辑blog</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/20180323-chinese-independent-develep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/24/20180323-chinese-independent-develep/" itemprop="url">网站导航</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T09:15:20+08:00">
+                2018-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="技术网站"><a href="#技术网站" class="headerlink" title="技术网站"></a>技术网站</h2><p><a href="https://aotu.io/index.html" target="_blank" rel="noopener">轻氧</a> </p>
+<p><a href="https://juejin.im/" target="_blank" rel="noopener">掘金</a></p>
+<h2 id="开发资源"><a href="#开发资源" class="headerlink" title="开发资源"></a>开发资源</h2><h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><p><a href="https://eggjs.org/zh-cn/" target="_blank" rel="noopener">egg.js</a></p>
+<h2 id="一些个人站点"><a href="#一些个人站点" class="headerlink" title="一些个人站点"></a>一些个人站点</h2><p><a href="https://www.liaoxuefeng.com/" target="_blank" rel="noopener">廖雪峰</a></p>
+<h2 id="一些资源"><a href="#一些资源" class="headerlink" title="一些资源"></a>一些资源</h2><p><a href="https://github.com/1c7/chinese-independent-developer" target="_blank" rel="noopener">中国独立开发者列表</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/19/20180319-how-push-message-to-client/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/19/20180319-how-push-message-to-client/" itemprop="url">消息怎样推送到客户端</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-19T09:20:21+08:00">
+                2018-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>客户端连接到服务器后，服务器有了客户的状态更新，需要送给客户端</p>
+<h3 id="场景1-移动平台"><a href="#场景1-移动平台" class="headerlink" title="场景1 移动平台"></a>场景1 移动平台</h3><p>耗电少<br>网络切换</p>
+<h3 id="场景2-局域网，工业监控"><a href="#场景2-局域网，工业监控" class="headerlink" title="场景2 局域网，工业监控"></a>场景2 局域网，工业监控</h3><p>数据量大<br>响应及时</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>客户端连接上服务器后，通过心跳保持一个长连接，当有属于消息来时，通过对应客户端的长连接把消息推送过去</p>
+<h3 id="相关技术"><a href="#相关技术" class="headerlink" title="相关技术"></a>相关技术</h3><p>MQTT<br> android GCM<br> ios APNS<br> WinPhone MPNS</p>
+<h3 id="知乎：谢泽帆的回答"><a href="#知乎：谢泽帆的回答" class="headerlink" title="知乎：谢泽帆的回答"></a><a href="https://www.zhihu.com/question/24938934/answer/85359794" target="_blank" rel="noopener">知乎：谢泽帆的回答</a></h3><blockquote>
+<p>但是在移动端如何稳定的维持长连接是一件非常复杂的事情，前面说了，客户端通过定时发送心跳信号(Heartbeat)以维持与服务端的长连接，但是，如果心跳的频率太频繁，移动设备耗电增加，心跳间隔太久又可能使得连接被断开。并且普遍认为移动设备处于一个多变的网络环境中，WIFI,2G,4G切换，基站切换都会引起网络变动，在不同网络环境下的心跳频率，与网络变动的重连动作，都需要大量的数据统计分析总结出来。</p>
+</blockquote>
+<blockquote>
+<p>这仅仅是客户端的难题，在如今移动应用动辄成百上千的用户量的情况下，如何维护如此多的长连接，如果应对大规模的消息下发以及后续针对下发消息的各种统计动作都是技术难点。</p>
+</blockquote>
+<blockquote>
+<p>再者，现在应用一般都是全平台的，发送一条消息，应该同时发送给Android，iOS, WinPhone，Android端走自建的TCP长连接通道，iOS与WinPhone走自家的系统推送通道。那么意味着你服务端要维护这三套推送系统。</p>
+</blockquote>
+<blockquote>
+<p>显然对于小团队，要独自建立一套消息推送系统的难度非常大，所以市场上涌现出很多优秀的推送产品，帮开发者聚合这些推送方式，并提供统一的推送接口。国外如 Urban Airship, Parse等, 国内有JPush，百度云推送，信鸽，LeanCloud等。(比较遗憾的是，非常优秀的Parse已经被Facebook宣布停止开发，并将于1年后关闭)现在除了体量非常大的公司自建推送系统外，一般普通公司都是使用第三方推送服务，以上所有的第三方推送服务，基础功能都是免费的，如果有条件的话，建议可以集成多家服务，A/B测试对比下推送效果，本人从事与以上某推送公司，在此就不评价各家产品好坏了，关于推送相关的问题可以私信问我 :)</p>
+</blockquote>
+<h3 id="知乎：李琰的回答"><a href="#知乎：李琰的回答" class="headerlink" title="知乎：李琰的回答"></a><a href="https://www.zhihu.com/question/24938934/answer/79382621" target="_blank" rel="noopener">知乎：李琰的回答</a></h3><blockquote>
+<p>关于服务器如何先找到设备、再找到app的问题。每一个设备都有一个自己的设备号，而设备中的app又都有一个唯一的包名。所以服务器只需要找到设备号与包名就可以定位到某个设备的某个应用，而这设备号与包名会一起构成一个标识符，叫做device_token，因此问题就简化为把device_token与消息内容等信息交给服务器，服务器把内容发到唯一的device_token上。</p>
+</blockquote>
+<blockquote>
+<p>首先是IOS平台，IOS的推送是通过苹果自己的APNs服务进行的，用户需要将device_token以及消息内容等推送信息交给APNs服务器，剩下的均由苹果自己来完成。</p>
+<p>但是如果提供的device_token是失效的（app被卸载、系统版本升级导致device_token变化等情况）那么推送过程就会被中断，频繁的断线重连甚至会被APNs认为是一直DoS攻击。</p>
+<p>接下来是Android平台，Android平台在不使用GCM的情况下就需要将自己的服务器或是第三方推送服务提供商的服务器与设备建立一条长连接，通过长连接进行推送。但是不建议自己设置服务器实现推送功能，一是因为成本太高（开发成本、维护成本），自己搭建的服务器无论是稳定性还是速度上都比不了第三方推送服务提供商的效果。另一个是因为自己的数据量较小，使用第三方推送服务提供商可以用他们的维度进行推送，实现精准推送。友盟推送就是做的比较好的，可以根据用户分群、地区、语言等多维度进行推送，最大程度减少对于用户的干扰，仅把消息推送给相关用户。</p>
+</blockquote>
+<p><img src="/images/push_message_to_client.jpg" alt="Android平台消息推送的简单示意图"></p>
+<h3 id="知乎朱佳顺的回答"><a href="#知乎朱佳顺的回答" class="headerlink" title="知乎朱佳顺的回答"></a><a href="https://www.zhihu.com/question/24938934/answer/29567191" target="_blank" rel="noopener">知乎朱佳顺的回答</a></h3><blockquote>
+<p>一般的服务器Push技术包括：</p>
+<ul>
+<li><p>基于 AJAX 的长轮询（long-polling）方式，服务器Hold一段时间后再返回信息；</p>
+</li>
+<li><p>HTTP Streaming，通过iframe和script标签完成数据的传输；</p>
+</li>
+<li><p>TCP 长连接</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>HTML5新引入的WebSocket，可以实现服务器主动发送数据至网页端，它和HTTP一样，是一个基于HTTP的应用层协议，跑的是TCP，所以本质上还是个长连接，双向通信，意味着服务器端和客户端可以同时发送并响应请求，而不再像HTTP的请求和响应</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>上述的1和2统称为comet技术，这里有个简单的介绍：Comet：基于 HTTP 长连接的“服务器推”技术前些日子给项目网站加了后台通知的实时推送到前端显示，用的是nodejs的<a href="http://socket.io，它是websocket的一个开源实现，对不支持websocket的浏览器降级成comet" target="_blank" rel="noopener">http://socket.io，它是websocket的一个开源实现，对不支持websocket的浏览器降级成comet</a> / ajax 轮询，<a href="http://socket.io的良好封装使代码编写非常容易。" target="_blank" rel="noopener">http://socket.io的良好封装使代码编写非常容易。</a></p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.zhihu.com/question/24938934" target="_blank" rel="noopener">知乎：服务端是如何主动推送信息到客户端的？</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/20180314-show-rsa-pub-fingerprint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/14/20180314-show-rsa-pub-fingerprint/" itemprop="url">怎么看rsa公钥的指纹</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T10:00:20+08:00">
+                2018-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具使用/" itemprop="url" rel="index">
+                    <span itemprop="name">工具使用</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>The newer SSH commands will list fingerprints as a SHA256 Key.</p>
+<p>For example</p>
+<pre><code>ssh-keygen -lf ~/.ssh/id_rsa.pub 
+1024 SHA256:19n6fkdz0qqmowiBy6XEaA87EuG/jgWUr44ZSBhJl6Y (DSA)
+</code></pre><p>If you need to compare it against a old fingerprint you also need to specify to use the md5 fingerprint hashing function.</p>
+<pre><code>ssh-keygen -E md5 -lf ~/.ssh/id_rsa.pub
+2048 MD5:4d:5b:97:19:8c:fe:06:f0:29:e7:f5:96:77:cb:3c:71 (DSA)
+</code></pre><p>Also available: -E sha1</p>
 
           
         
@@ -599,7 +1887,7 @@ To run your app on UWP:
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -645,7 +1933,7 @@ To run your app on UWP:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -667,7 +1955,7 @@ To run your app on UWP:
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -704,7 +1992,7 @@ To run your app on UWP:
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

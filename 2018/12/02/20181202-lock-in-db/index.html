@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="T1，T2假设是连个线程 共享锁（shared lock）共享锁，就是表可以同时访问，一般就是查询而数据库规定同一资源上不能同时共存共享锁和排他锁。所以T2必须等T1 更新锁加上更新锁的意思就是我先做表查询，但马上要加上排他锁对记录进行更新此时别人也可以查询，能加共享锁吗？可以 更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁 （用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库中的锁">
+<meta property="og:url" content="http://yoursite.com/2018/12/02/20181202-lock-in-db/index.html">
+<meta property="og:site_name" content="笔记">
+<meta property="og:description" content="T1，T2假设是连个线程 共享锁（shared lock）共享锁，就是表可以同时访问，一般就是查询而数据库规定同一资源上不能同时共存共享锁和排他锁。所以T2必须等T1 更新锁加上更新锁的意思就是我先做表查询，但马上要加上排他锁对记录进行更新此时别人也可以查询，能加共享锁吗？可以 更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁 （用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-10T02:02:16.024Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库中的锁">
+<meta name="twitter:description" content="T1，T2假设是连个线程 共享锁（shared lock）共享锁，就是表可以同时访问，一般就是查询而数据库规定同一资源上不能同时共存共享锁和排他锁。所以T2必须等T1 更新锁加上更新锁的意思就是我先做表查询，但马上要加上排他锁对记录进行更新此时别人也可以查询，能加共享锁吗？可以 更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁 （用">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/02/20181202-lock-in-db/"/>
+
+
+
+
+
+  <title>数据库中的锁 | 笔记</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">烂笔头</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tag"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/02/20181202-lock-in-db/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="blacksmith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库中的锁</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T22:20:17+08:00">
+                2018-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>T1，T2假设是连个线程</p>
+<h2 id="共享锁（shared-lock）"><a href="#共享锁（shared-lock）" class="headerlink" title="共享锁（shared lock）"></a>共享锁（shared lock）</h2><p>共享锁，就是表可以同时访问，一般就是查询<br>而数据库规定同一资源上不能同时共存共享锁和排他锁。所以T2必须等T1</p>
+<h2 id="更新锁"><a href="#更新锁" class="headerlink" title="更新锁"></a>更新锁</h2><p>加上更新锁的意思就是我先做表查询，但马上要加上排他锁对记录进行更新<br>此时别人也可以查询，能加共享锁吗？可以</p>
+<p>更新锁的意思是：“我现在只想读，你们别人也可以读，但我将来可能会做更新操作，我已经获取了从共享锁（用来读）到排他锁</p>
+<p>（用来更新）的资格”。一个事物只能有一个更新锁获此资格。</p>
+<p>T1执行select，加更新锁。</p>
+<p>T2运行，准备加更新锁，但发现已经有一个更新锁在那儿了，只好等。</p>
+<p>当后来有user3、user4…需要查询table表中的数据时，并不会因为T1的select在执行就被阻塞，照样能查询，相比起例6，这提高</p>
+<h2 id="排他锁"><a href="#排他锁" class="headerlink" title="排他锁"></a>排他锁</h2><p>T1:</p>
+<p>begin</p>
+<p>select * from table(updlock) (加更新锁）</p>
+<p>update table set column1=’hello’ (重点：这里T1做update时，不需要等T2释放什么，而是直接把更新锁升级为排他锁，然后执行update)</p>
+<p>T2:</p>
+<p>begin</p>
+<p>select * from table (T1加的更新锁不影响T2读取）</p>
+<p>update table set column1=’world’ (T2的update需要等T1的update做完才能执行)</p>
+<p>我们以这个例子来加深更新锁的理解，</p>
+<p>第一种情况：T1先达，T2紧接到达；在这种情况中，T1先对表加更新锁，T2对表加共享锁，假设T2的select先执行完，准备执行update，发现已有更新锁存在，T2等。T1执行这时才执行完select，准备执行update，更新锁升级为排他锁，然后执行update，执行完成，事务结束，释放锁，T2才轮到执行update。</p>
+<p>第二种情况：T2先达，T1紧接达；在这种情况，T2先对表加共享锁，T1达后，T1对表加更新锁，假设T2 select先结束，准备update，发现已有更新锁，则等待，后面步骤就跟第一种情况一样了。</p>
+<p>这个例子是说明：排他锁与更新锁是不兼容的，它们不能同时加在同一子资源上。排他锁（独占锁，Exclusive Locks)</p>
+<p>这个简单，即其它事务既不能读，又不能改排他锁锁定的资源。</p>
+<p>3，意向锁(Intent Locks)<br>意向锁就是说在屋（比如代表一个表）门口设置一个标识，说明屋子里有人（比如代表某些记录）被锁住了。另一个人想知道屋子</p>
+<p>里是否有人被锁，不用进屋子里一个一个的去查，直接看门口标识就行了。</p>
+<p>当一个表中的某一行被加上排他锁后，该表就不能再被加表锁。数据库程序如何知道该表不能被加表锁？一种方式是逐条的判断该</p>
+<p>表的每一条记录是否已经有排他锁，另一种方式是直接在表这一层级检查表本身是否有意向锁，不需要逐条判断。显然后者效率高。</p>
+<p>例12：</p>
+<hr>
+<p>T1: begin tran</p>
+<p>select * from table (xlock) where id=10 –意思是对id=10这一行强加排他锁</p>
+<p>T2: begin tran</p>
+<p>select * from table (tablock) –意思是要加表级锁</p>
+<p>假设T1先执行，T2后执行，T2执行时，欲加表锁，为判断是否可以加表锁，数据库系统要逐条判断table表每行记录是否已有排他锁，</p>
+<p>如果发现其中一行已经有排他锁了，就不允许再加表锁了。只是这样逐条判断效率太低了。</p>
+<p>实际上，数据库系统不是这样工作的。当T1的select执行时，系统对表table的id=10的这一行加了排他锁，还同时悄悄的对整个表</p>
+<p>加了意向排他锁(IX)，当T2执行表锁时，只需要看到这个表已经有意向排他锁存在，就直接等待，而不需要逐条检查资源了。</p>
+<p>例13：</p>
+<hr>
+<p>T1: begin tran</p>
+<p>update table set column1=’hello’ where id=1</p>
+<p>T2: begin tran</p>
+<p>update table set column1=’world’ where id=1</p>
+<p>这个例子和上面的例子实际效果相同，T1执行，系统对table同时对行家排他锁、对页加意向排他锁、对表加意向排他锁。</p>
+<p>4，计划锁(Schema Locks)<br>例14：</p>
+<hr>
+<p>alter table …. (加schema locks，称之为Schema modification (Sch-M) locks</p>
+<p>DDL语句都会加Sch-M锁</p>
+<p>该锁不允许任何其它session连接该表。连都连不了这个表了，当然更不用说想对该表执行什么sql语句了。</p>
+<p>例15:</p>
+<hr>
+<p>用jdbc向数据库发送了一条新的sql语句，数据库要先对之进行编译，在编译期间，也会加锁，称之为：Schema stability (Sch-S) locks</p>
+<p>select * from tableA</p>
+<p>编译这条语句过程中，其它session可以对表tableA做任何操作(update,delete，加排他锁等等），但不能做DDL(比如alter table)操作。</p>
+<p>Bulk Update Locks 主要在批量导数据时用（比如用类似于oracle中的imp/exp的bcp命令）。不难理解，程序员往往也不需要关心，不赘述了。<br>3 何时加锁？<br>如何加锁，何时加锁，加什么锁，你可以通过hint手工强行指定，但大多是数据库系统自动决定的。这就是为什么我们可以不懂锁也可</p>
+<p>以高高兴兴的写SQL。</p>
+<p>例15:</p>
+<hr>
+<p>T1: begin tran</p>
+<p>update table set column1=’hello’ where id=1</p>
+<p>T2: SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED – 事物隔离级别为允许脏读</p>
+<p>go</p>
+<p>select * from table where id=1</p>
+<p>这里，T2的select可以查出结果。如果事物隔离级别不设为脏读，则T2会等T1事物执行完才能读出结果。</p>
+<p>数据库如何自动加锁的？</p>
+<p>1) T1执行，数据库自动加排他锁</p>
+<p>2) T2执行，数据库发现事物隔离级别允许脏读，便不加共享锁。不加共享锁，则不会与已有的排他锁冲突，所以可以脏读。</p>
+<p>例16:</p>
+<hr>
+<p>T1: begin tran</p>
+<p>update table set column1=’hello’ where id=1</p>
+<p>T2: select * from table where id=1 –为指定隔离级别，则使用系统默认隔离级别，它不允许脏读</p>
+<p>如果事物级别不设为脏读，则：</p>
+<p>1) T1执行，数据库自动加排他锁</p>
+<p>2) T2执行，数据库发现事物隔离级别不允许脏读，便准备为此次select过程加共享锁，但发现加不上，因为已经有排他锁了，所以就</p>
+<p>等啊等。直到T1执行完，释放了排他锁，T2才加上了共享锁，然后开始读….</p>
+<p>4 锁的粒度<br>锁的粒度就是指锁的生效范围，就是说是行锁，还是页锁，还是整表锁. 锁的粒度同样既可以由数据库自动管理，也可以通过手工指定hint来管理。</p>
+<p>例17：</p>
+<hr>
+<p>T1: select * from table (paglock)</p>
+<p>T2: update table set column1=’hello’ where id&gt;10</p>
+<p>T1执行时，会先对第一页加锁，读完第一页后，释放锁，再对第二页加锁，依此类推。假设前10行记录恰好是一页(当然，一般不可能</p>
+<p>一页只有10行记录），那么T1执行到第一页查询时，并不会阻塞T2的更新。</p>
+<p>例18：</p>
+<hr>
+<p>T1: select * from table (rowlock)</p>
+<p>T2: update table set column1=’hello’ where id=10</p>
+<p>T1执行时，对每行加共享锁，读取，然后释放，再对下一行加锁;T2执行时，会对id=10的那一行试图加锁，只要该行没有被T1加上行锁，</p>
+<p>T2就可以顺利执行update操作。</p>
+<p>例19：</p>
+<hr>
+<p>T1: select * from table (tablock)</p>
+<p>T2: update table set column1=’hello’ where id = 10</p>
+<p>T1执行，对整个表加共享锁. T1必须完全查询完，T2才可以允许加锁，并开始更新。</p>
+<p>以上3例是手工指定锁的粒度，也可以通过设定事物隔离级别，让数据库自动设置锁的粒度。不同的事物隔离级别，数据库会有不同的</p>
+<p>加锁策略（比如加什么类型的锁，加什么粒度的锁）。具体请查联机手册。</p>
+<p>5 锁与事物隔离级别的优先级<br>手工指定的锁优先，</p>
+<p>例20:</p>
+<hr>
+<p>T1: GO</p>
+<p>SET TRANSACTION ISOLATION LEVEL SERIALIZABLE</p>
+<p>GO</p>
+<p>BEGIN TRANSACTION</p>
+<p>SELECT * FROM table (NOLOCK)</p>
+<p>GO</p>
+<p>T2: update table set column1=’hello’ where id=10</p>
+<p>T1是事物隔离级别为最高级，串行锁，数据库系统本应对后面的select语句自动加表级锁，但因为手工指定了NOLOCK，所以该select</p>
+<p>语句不会加任何锁，所以T2也就不会有任何阻塞。</p>
+<p>6 数据库的其它重要Hint以及它们的区别<br>1) holdlock 对表加共享锁，且事物不完成，共享锁不释放。</p>
+<p>2) tablock 对表加共享锁，只要statement不完成，共享锁不释放。</p>
+<p>与holdlock区别，见下例：</p>
+<p>例21</p>
+<hr>
+<p>T1:</p>
+<p>begin tran</p>
+<p>select * from table (tablock)</p>
+<p>T2:</p>
+<p>begin tran</p>
+<p>update table set column1=’hello’ where id = 10</p>
+<p>T1执行完select，就会释放共享锁，然后T2就可以执行update. 此之谓tablock. 下面我们看holdlock</p>
+<p>例22</p>
+<hr>
+<p>T1:</p>
+<p>begin tran</p>
+<p>select * from table (holdlock)</p>
+<p>T2:</p>
+<p>begin tran</p>
+<p>update table set column1=’hello’ where id = 10</p>
+<p>T1执行完select，共享锁仍然不会释放，仍然会被hold(持有），T2也因此必须等待而不能update. 当T1最后执行了commit或</p>
+<p>rollback说明这一个事物结束了，T2才取得执行权。</p>
+<p>3) TABLOCKX 对表加排他锁</p>
+<p>例23：</p>
+<hr>
+<p>T1: select * from table(tablockx) (强行加排他锁）</p>
+<p>其它session就无法对这个表进行读和更新了，除非T1执行完了，就会自动释放排他锁。</p>
+<p>例24：</p>
+<hr>
+<p>T1: begin tran</p>
+<p>select * from table(tablockx)</p>
+<p>这次，单单select执行完还不行，必须整个事物完成（执行了commit或rollback后）才会释放排他锁。</p>
+<p>4) xlock 加排他锁</p>
+<p>那它跟tablockx有何区别呢？</p>
+<p>它可以这样用，</p>
+<p>例25:</p>
+<hr>
+<p>select * from table(xlock paglock) 对page加排他锁</p>
+<p>而TABLELOCX不能这么用。</p>
+<p>xlock还可这么用：select <em> from table(xlock tablock) 效果等同于select </em> from table(tablockx)</p>
+<p>7 锁的超时等待<br>例26</p>
+<p>SET LOCK_TIMEOUT 4000 用来设置锁等待时间，单位是毫秒，4000意味着等待</p>
+<p>4秒可以用select @@LOCK_TIMEOUT查看当前session的锁超时设置。-1 意味着</p>
+<p>永远等待。</p>
+<p>T1: begin tran</p>
+<p>udpate table set column1=’hello’ where id = 10</p>
+<p>T2: set lock_timeout 4000</p>
+<p>select * from table wehre id = 10</p>
+<p>T2执行时，会等待T1释放排他锁，等了4秒钟，如果T1还没有释放排他锁，T2就会抛出异常： Lock request time out period exceeded.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/29/20181129-devops/" rel="next" title="20181129-devops">
+                <i class="fa fa-chevron-left"></i> 20181129-devops
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/04/20181204-generator/" rel="prev" title="generator函数">
+                generator函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">blacksmith</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#共享锁（shared-lock）"><span class="nav-number">1.</span> <span class="nav-text">共享锁（shared lock）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新锁"><span class="nav-number">2.</span> <span class="nav-text">更新锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排他锁"><span class="nav-number">3.</span> <span class="nav-text">排他锁</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">blacksmith</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
